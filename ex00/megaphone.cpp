@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 			megaphone += (char) std::toupper(input[i]);
 		}
 	}
-
 	std::cout << megaphone << std::endl;
 	return (0);
 }
