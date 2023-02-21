@@ -122,5 +122,10 @@ void	Contact::printResume(void)
 
 void	Contact::printFull(void)
 {
-	std::cout << "ihu!" << std::endl;
+	std::cout << "First name: " << this->firstName << std::endl;
+	std::cout << "Last name: " << this->lastName << std::endl;
+	std::cout << "Nickname: " << this->nickname << std::endl;
+	std::cout << "Phone number: " << this->phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->darkestSecret << std::endl;
+	std::cout << std::endl;
 }

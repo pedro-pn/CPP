@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <iomanip>
 #include <stdlib.h>
 
 PhoneBook::PhoneBook(void) : number_of_contacts(0)
@@ -8,7 +9,7 @@ PhoneBook::PhoneBook(void) : number_of_contacts(0)
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Scrappy book is deleted FOREVER!" << std::endl;
+	std::cout << "Scrappy book has been deleted FOREVER!" << std::endl;
 }
 
 void	PhoneBook::addContact(int index)
@@ -23,20 +24,21 @@ void	PhoneBook::addContact(int index)
 		this->number_of_contacts++;
 }
 
-void	PhoneBook::searchContact(void)
+void	PhoneBook::printResume(void)
 {
-	std::string		index_str;
-	int				index;
-
-	if (this->number_of_contacts == 0)
-	{
-		std::cout << "Scrappy book is empty!" << std::endl;
-		return ;
-	}
+	std::cout << std::endl;
 	this->printSummary();
 	for (int i = 0; i < this->number_of_contacts; i++){
 		this->contacts[i].printResume();
 	}
+	std::cout << std::endl;
+}
+
+void	PhoneBook::printFull(void)
+{
+	std::string		index_str;
+	int				index;
+
 	while (1){
 		std::cout << "Insert an index: ";
 		std::cin >> index_str;
@@ -45,7 +47,19 @@ void	PhoneBook::searchContact(void)
 			break ;
 		std::cout << "Insert a valid index!" << std::endl;
 	}
+	std::cout << std::endl;
 	this->contacts[index - 1].printFull();
+}
+
+void	PhoneBook::searchContact(void)
+{
+	if (this->number_of_contacts == 0)
+	{
+		std::cout << "Scrappy book is empty!" << std::endl;
+		return ;
+	}
+	this->printResume();
+	this->printFull();
 }
 
 void	PhoneBook::printSummary(void)
