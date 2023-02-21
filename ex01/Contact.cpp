@@ -2,26 +2,24 @@
 
 Contact::Contact(void)
 {
-	std::cout << "Contact constructor called" << std::endl;
 }
 
 Contact::~Contact(void)
 {
-	std::cout << "Contact destructor called" << std::endl;
 }
 
 void	Contact::setFirstName(void)
 {
 	std::string	first_name;
 
+	std::cin.ignore();
 	while (1){
-		std::cout << "Insert first namer: ";
+		std::cout << "Insert first name: ";
 		std::getline(std::cin, first_name);
-		if (first_name.size() == 0)
-			continue ;
-		this->firstName = first_name;
-		break ;
+		if (first_name.size() != 0)
+			break ;
 	}
+	this->firstName = first_name;
 }
 
 void	Contact::setLastName(void)
@@ -115,9 +113,14 @@ void	Contact::formatContactOutput(std::string info)
 void	Contact::printResume(void)
 {
 	std::cout << std::setw(10);
-	std::cout << this->index << "|";
+	std::cout << this->index + 1 << "|";
 	this->formatContactOutput(this->firstName);
 	this->formatContactOutput(this->lastName);
 	this->formatContactOutput(this->nickname);
 	std::cout << std::endl;
+}
+
+void	Contact::printFull(void)
+{
+	std::cout << "ihu!" << std::endl;
 }

@@ -5,12 +5,10 @@
 	PhoneBook	PhoneBook;
 	std::string	input;
 	int			contact_index = 0;
-	
 
-	std::cout << "Welcome to my scrappy book!" << std::endl;
 	while (1)
 	{
-		std::cout << "The book is empty! You can ADD, SEARCH or EXIT: " << std::endl;
+		std::cout << "Type ADD, SEARCH or EXIT: ";
 		std::cin >> input;
 		if (input == "ADD"){
 			PhoneBook.addContact(contact_index);
@@ -18,12 +16,8 @@
 		}
 		else if (input == "SEARCH")
 			PhoneBook.searchContact();
-		else if (input == "EXIt")
-		{
-			std::cout << "Closing scrappy book!" << std::endl;
+		else if (input == "EXIT")
 			break ;
-		}
 	}
-
 	return (0);
 }

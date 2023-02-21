@@ -19,7 +19,7 @@ class Contact {
 		void	setContactIndex(int index);
 
 		void	printResume(void);
-
+		void	printFull(void);
 
 	private:
 
