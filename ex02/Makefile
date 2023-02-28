@@ -2,7 +2,7 @@ SOURCES = tests.cpp Account.cpp
 NAME = account
 OBJS = $(SOURCES:.cpp=.o)
 CC = c++
-FLAGS =-std=c++98
+FLAGS = -Werror -Wall -Wextra -std=c++98
 
 all: ${NAME}
 

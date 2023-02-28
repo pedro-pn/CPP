@@ -2,3 +2,5 @@
 megaphone
 *.json
 phonebook
+account
+*.log
