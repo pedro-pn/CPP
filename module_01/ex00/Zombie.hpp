@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:01:46 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/02/28 19:43:32 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:18:53 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ class Zombie {
 		std::string	name;
 		
 };
+
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif

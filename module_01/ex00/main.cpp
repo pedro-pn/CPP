@@ -6,11 +6,11 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 20:38:57 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/02/28 20:44:04 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:19:18 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.h"
+#include "Zombie.hpp"
 #include <iostream>
 
 int	main(void) {
