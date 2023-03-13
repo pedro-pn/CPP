@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:01:46 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/02/28 21:03:00 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:26:13 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Zombie {
 	private:
 
 		std::string	name;
-		
 };
+
+Zombie*	zombieHorde(int N, std::string name);
 
 #endif
