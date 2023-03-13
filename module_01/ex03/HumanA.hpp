@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:48:42 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/01 10:38:46 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:36:44 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class HumanA {
 		~HumanA(void);
 
 		void	attack(void);
-
 
 	private:
 

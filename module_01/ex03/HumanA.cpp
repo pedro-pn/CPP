@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 09:53:18 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/01 10:38:54 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:40:22 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ HumanA::~HumanA(void) {
 void	HumanA::attack(void) {
 	std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
 }
-
