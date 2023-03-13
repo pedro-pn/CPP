@@ -1,5 +1,5 @@
 SOURCES = file.cpp replace.cpp main.cpp
-NAME = repklace
+NAME = replace
 OBJS = $(SOURCES:.cpp=.o)
 CC = c++
 FLAGS = -Werror -Wextra -Wall -std=c++98
