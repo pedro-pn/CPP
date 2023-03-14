@@ -6,11 +6,13 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:35:41 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/06 21:03:44 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:30:31 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int	Fixed::bits = 8;
 
 Fixed::Fixed(void) : value(0){
 	std::cout << "Default constructor called" << std::endl;
