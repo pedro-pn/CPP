@@ -6,15 +6,23 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:44:43 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/14 10:13:02 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:21:32 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include <iostream>
 
+ClapTrap::ClapTrap(void) {
+	std::cout << "ClapTrap default constructor was called!" << std::endl;
+	this->Name = "Newbie";
+	this->Hit = 10;
+	this->EnergyPoints = 10;
+	this->AttackDamage = 0;
+}
+
 ClapTrap::ClapTrap(std::string name) : Name(name) {
-	std::cout << "ClapTrap constructor was called!" << std::endl;
+	std::cout << "ClapTrap named constructor was called!" << std::endl;
 	this->Hit = 10;
 	this->EnergyPoints = 10;
 	this->AttackDamage = 0;
@@ -41,6 +49,11 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const &claptrap) {
 std::string	ClapTrap::getName(void) const {
 	return (this->Name);
 }
+
+void	ClapTrap::setName(std::string name) {
+	this->Name = name;
+}
+
 int			ClapTrap::getHit(void) const {
 	return (this->Hit);
 }
