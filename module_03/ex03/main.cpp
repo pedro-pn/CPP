@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:24:27 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/14 17:40:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:24:29 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	main(void) {
 	dia_1.attack(dia_2.getName());
 	dia_2.takeDamage(dia_1.getAttackDamage());
 	dia_2.whoAmI();
+
+	dia_1.highFiveGuys();
+	dia_1.beRepaired(40);
+	dia_1.guardGate();
 
 	return (0);
 }
