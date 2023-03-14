@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:41:43 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/13 19:16:19 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 10:23:02 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class ClapTrap {
 
 	public:
 
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &claptrap);
 		~ClapTrap(void);
@@ -34,7 +35,7 @@ class ClapTrap {
 		int			getEnergyPoints(void) const;
 		int			getAttackDamage(void) const;
 
-		void		attackTarget(ClapTrap &target);
+		void		setName(std::string name);
 
 	protected:
 
@@ -42,7 +43,6 @@ class ClapTrap {
 		int			Hit;
 		int			EnergyPoints;
 		int			AttackDamage;
-
 };
 
 #endif
