@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:32:56 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/08 16:56:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:16:50 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ class Fixed {
 
 		Fixed	operator ++ (void);
 		Fixed	operator ++ (int);
+
+		Fixed	operator -- (void);
+		Fixed	operator -- (int);
 
 		static Fixed&	min(Fixed& fixed_1, Fixed& fixed_2);
 		static Fixed const &	min(Fixed const & fixed_1, Fixed const & fixed_2);

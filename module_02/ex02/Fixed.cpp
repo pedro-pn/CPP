@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:35:41 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/08 16:56:29 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:18:02 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,18 @@ Fixed	Fixed::operator ++ (void) {
 Fixed	Fixed::operator ++ (int) {
 	Fixed result = *this;
 	this->value += 1;
+	return (result);
+}
+
+Fixed	Fixed::operator -- (void) {
+	(*this)--;
+	Fixed result = *this;
+	return (result);
+}
+
+Fixed	Fixed::operator -- (int) {
+	Fixed result = *this;
+	this->value -= 1;
 	return (result);
 }
 
