@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 19:07:40 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/02/28 19:43:34 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 21:59:12 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 Zombie::Zombie(std::string name) : name(name) {
-
+	std::cout << name << " is born!" << std::endl;
 }
 
 Zombie::~Zombie(void){
