@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:26:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:39:20 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:31:24 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class WrongAnimal {
 
 		WrongAnimal(void);
 		WrongAnimal(WrongAnimal const &wrongAnimal);
-		~WrongAnimal(void);
+		virtual ~WrongAnimal(void);
 
 		WrongAnimal&	operator=(WrongAnimal const &wrongAnimal);
 

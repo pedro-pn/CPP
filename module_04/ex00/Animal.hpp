@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:33:45 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:24:20 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:31:11 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal {
 
 		Animal(void);
 		Animal(Animal const &animal);
-		~Animal(void);
+		virtual ~Animal(void);
 
 		Animal&	operator=(Animal const &animal);
 

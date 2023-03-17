@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:17:45 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:41:07 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:30:39 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int main() {
 	j->makeSound();
 	meta->makeSound();
 	c->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
+	delete c;
 	
 	return 0;
 }
