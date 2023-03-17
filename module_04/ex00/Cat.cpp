@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:04:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:23:13 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:43:39 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Cat::Cat(Cat const &cat) : Animal() {
 Cat&	Cat::operator=(Cat const &cat) {
 	if (this == &cat)
 		return (*this);
-	*this = cat.getType();
+	this->setType(cat.getType());
 	return (*this);
 }
 

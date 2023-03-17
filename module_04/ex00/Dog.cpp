@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:15:41 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:23:22 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:43:44 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Dog::Dog(Dog const &dog) : Animal() {
 Dog&	Dog::operator=(Dog const &dog) {
 	if (this == &dog)
 		return (*this);
-	*this = dog.getType();
+	this->setType(dog.getType());
 	return (*this);
 }
 

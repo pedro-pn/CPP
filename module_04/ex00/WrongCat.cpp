@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:30:23 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:33:33 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 10:44:09 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ WrongCat::WrongCat(WrongCat const &wrongCat) : WrongAnimal() {
 WrongCat&	WrongCat::operator=(WrongCat const &wrongCat) {
 	if (this == &wrongCat)
 		return (*this);
-	*this = wrongCat.getType();
+	this->setType(wrongCat.getType());
 	return (*this);
 }
 
