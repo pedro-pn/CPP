@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:26:29 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:31:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:19:45 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class WrongAnimal {
 
 		void	makeSound(void) const;
 
-	private:
+	protected:
 
 		std::string	type;
 };
