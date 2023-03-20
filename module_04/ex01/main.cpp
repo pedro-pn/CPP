@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:13:32 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 13:38:21 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:21:16 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,21 @@ int	main(void) {
 	}
 
 	std::cout << std::endl << "==== End of subject tests ====" << std::endl;
-	Animal	*dog = new Dog("romeu");
-	Animal	*cat = new Cat("Romeu");
-	//fazer getter and setter do brain em Dog e Cat
+	Dog	dog = Dog("romeu");
+	Cat	cat = Cat("Romeu");
+	cat.setBrainIdea("Jelly", 0);
+	cat.setBrainIdea("Jelly1", 1);
+	cat.setBrainIdea("Jelly2", 2);
+	cat.setBrainIdea("Jelly3", 3);
+	Cat	cat_2 = Cat(cat);
+	
+	std::cout << std::endl;
+	std::cout << "cat before the change: " << cat.getBrainIdea(0) << std::endl;
+	cat.setBrainIdea("Pasta", 0);
+	std::cout << "cat after the change: " << cat.getBrainIdea(0) << std::endl;
+	std::cout << "cat_2: " << cat_2.getBrainIdea(0) << std::endl;
+	std::cout << std::endl;
+
 
 	
 }

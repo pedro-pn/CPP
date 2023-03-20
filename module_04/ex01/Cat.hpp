@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:44:48 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:41:23 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:11:41 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class Cat : public Animal {
 		~Cat(void);
 
 		Cat&	operator=(Cat const &cat);
+
+		std::string	getBrainIdea(int const index) const;
+		void		setBrainIdea(std::string const idea, int const index);
 
 		virtual void	makeSound(void) const;
 	

@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 10:37:44 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 13:37:36 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/20 10:02:32 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Brain {
 		Brain&	operator=(Brain const &brain);
 
 		std::string		getIdeas(int const index) const;
-		void			setIdeas(std::string *ideas);
+		void			setIdeas(std::string const idea, int const index);
 
 	private:
 

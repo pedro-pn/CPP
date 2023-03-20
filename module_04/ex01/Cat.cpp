@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:04:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 13:27:34 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:12:33 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Cat::~Cat(void) {
 
 Cat::Cat(Cat const &cat) : Animal() {
 	std::cout << "Cat copy constructor was called!" << std::endl;
+	this->brain = new Brain();
 	*this = cat;
 }
 
@@ -41,6 +42,15 @@ Cat&	Cat::operator=(Cat const &cat) {
 	*this->brain = *cat.brain;
 	return (*this);
 }
+
+std::string	Cat::getBrainIdea(int const index) const {
+	return (this->brain->getIdeas(index));
+}
+
+void		Cat::setBrainIdea(std::string const idea, int const index) {
+	this->brain->setIdeas(idea, index);
+}
+
 
 void	Cat::makeSound(void) const {
 	std::cout << getType() << ": MEOOOOOOOOOOOOOOOOOWWW!" << std::endl;
