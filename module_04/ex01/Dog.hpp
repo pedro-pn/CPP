@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:14:52 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 11:14:40 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:54:52 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Dog : public Animal {
 	public:
 
 		Dog(void);
-		Dog(std::string const name);
 		Dog(Dog const &dog);
 		~Dog(void);
 

@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:37:20 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:44:48 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:53:45 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 Animal::Animal(void) : type("foo") {
 	std::cout << "Animal default constructor was called!" << std::endl;
+}
+
+Animal::Animal(std::string const &type) : type(type) {
+	std::cout << "Animal typed constructor was called!" << std::endl;
 }
 
 Animal::~Animal(void) {
