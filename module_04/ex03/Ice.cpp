@@ -6,22 +6,28 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:15:38 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/21 10:52:51 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:13:59 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
 #include <iostream>
 
-Ice::Ice(void) : AMateria("ice") {}
+Ice::Ice(void) : AMateria("ice") {
+	std::cout << "Ice constructor was called!" << std::endl;
+}
 
-Ice::~Ice(void) {}
+Ice::~Ice(void) {
+	std::cout << "Ice destructor was called!" << std::endl;
+}
 
 Ice::Ice(Ice const & rhs) : AMateria("ice") {
+	std::cout << "Ice copy constructor was called!" << std::endl;
 	*this = rhs;
 }
 
 Ice&	Ice::operator=(Ice const & rhs) {
+	std::cout << "Ice assigment operator was called!" << std::endl;
 	(void)rhs;
 	return (*this);
 }

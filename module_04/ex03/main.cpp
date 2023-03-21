@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 10:30:42 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/21 11:31:52 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:15:44 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ int main() {
 
 	ICharacter* bob = new Character("bob");
 
-
+	std::cout << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
+	std::cout << std::endl;
 
 
 	delete bob;
@@ -71,8 +72,10 @@ int main() {
 	jeff.equip(skills.createMateria("cure"));
 	jeff.equip(skills.createMateria("cure"));
 
+	std::cout << std::endl;
 	jeff.use(0, *chad);
 	chad->use(0, *noa);
+	std::cout << std::endl;
 
 	delete chad;
 	delete noa;

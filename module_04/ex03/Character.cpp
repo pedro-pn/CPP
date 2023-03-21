@@ -11,21 +11,25 @@
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include <iostream>
 #define my_delete(x) {delete x; x = NULL;}
 
 Character::Character(void) : ICharacter() {
+	std::cout << "Character default constructor was called!" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		this->slots[i] = NULL;
 	}
 }
 
 Character::Character(std::string const & name) : ICharacter(), name(name) {
+	std::cout << "Character named constructor was called!" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		this->slots[i] = NULL;
 	}
 }
 
 Character::~Character(void) {
+	std::cout << "Character destructor was called!" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		if (this->slots[i] != NULL)
 			my_delete(this->slots[i]);
@@ -33,6 +37,7 @@ Character::~Character(void) {
 }
 
 Character::Character(Character const &rhs) : ICharacter() {
+	std::cout << "Character copy constructor was called!" << std::endl;
 	for (int i = 0; i < 4; i++) {
 		this->slots[i] = NULL;
 	}
@@ -40,6 +45,7 @@ Character::Character(Character const &rhs) : ICharacter() {
 }
 
 Character&	Character::operator=(Character const &rhs) {
+	std::cout << "Character assigment operator was called!" << std::endl;
 	if (this == &rhs)
 		return (*this);
 	for (int i = 0; i < 4; i++) {
