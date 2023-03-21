@@ -6,20 +6,15 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:04:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:43:39 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:49:00 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat(void) : Animal() {
+Cat::Cat(void) : Animal("Cat") {
 	std::cout << "Cat default constructor was called!" << std::endl;
-}
-
-Cat::Cat(std::string const name) : Animal() {
-	std::cout << "Cat named constructor was called!" << std::endl;
-	setType(name);
 }
 
 Cat::~Cat(void) {

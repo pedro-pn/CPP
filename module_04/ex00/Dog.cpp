@@ -6,20 +6,15 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:15:41 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:43:44 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:48:56 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog(void) : Animal() {
+Dog::Dog(void) : Animal("Dog") {
 	std::cout << "Dog default constructor was called!" << std::endl;
-}
-
-Dog::Dog(std::string const name) : Animal() {
-	std::cout << "Dog named constructor was called!" << std::endl;
-	setType(name);
 }
 
 Dog::~Dog(void) {

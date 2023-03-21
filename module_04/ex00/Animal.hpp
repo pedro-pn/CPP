@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:33:45 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 13:19:33 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:45:47 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Animal {
 	public:
 
 		Animal(void);
+		Animal(std::string const &type);
 		Animal(Animal const &animal);
 		virtual ~Animal(void);
 

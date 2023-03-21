@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:27:38 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 10:43:56 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:50:35 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include <iostream>
 
 WrongAnimal::WrongAnimal(void) : type("foo") {
+	std::cout << "WrongAnimal default constructor was called!" << std::endl;
+}
+
+WrongAnimal::WrongAnimal(std::string const &type) : type(type) {
 	std::cout << "WrongAnimal default constructor was called!" << std::endl;
 }
 

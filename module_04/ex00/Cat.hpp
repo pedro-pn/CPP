@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:44:48 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/17 09:23:18 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:44:53 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class Cat : public Animal {
 	public:
 
 		Cat(void);
-		Cat(std::string const name);
 		Cat(Cat const &cat);
 		~Cat(void);
 
