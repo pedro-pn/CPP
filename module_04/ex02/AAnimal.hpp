@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 08:33:45 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 11:25:27 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:58:27 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class AAnimal {
 	public:
 
 		AAnimal(void);
+		AAnimal(std::string const &type);
 		AAnimal(AAnimal const &animal);
 		virtual ~AAnimal(void);
 

@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:13:32 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 11:39:46 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 12:00:23 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(void) {
 	}
 
 	std::cout << std::endl << "==== End of subject tests ====" << std::endl;
-	Dog	dog = Dog("romeu");
-	Cat	cat = Cat("Romeu");
+	Dog	dog = Dog();
+	Cat	cat = Cat();
 	cat.setBrainIdea("Jelly", 0);
 	cat.setBrainIdea("Jelly1", 1);
 	cat.setBrainIdea("Jelly2", 2);

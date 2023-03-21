@@ -6,21 +6,15 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:04:22 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 11:26:47 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:59:34 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat(void) : AAnimal() {
+Cat::Cat(void) : AAnimal("Cat") {
 	std::cout << "Cat default constructor was called!" << std::endl;
-	this->brain = new Brain();
-}
-
-Cat::Cat(std::string const name) : AAnimal() {
-	std::cout << "Cat named constructor was called!" << std::endl;
-	setType(name);
 	this->brain = new Brain();
 }
 
