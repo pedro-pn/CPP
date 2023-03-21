@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:52:32 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 11:53:28 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:35:04 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "string"
 # include "AMateria.hpp"
+
+typedef class AMateria AMateria;
 
 class ICharacter {
 

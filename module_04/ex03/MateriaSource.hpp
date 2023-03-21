@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:45:01 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 19:48:12 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:32:08 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define MATERIASOURCE_HPP
 
 # include "AMateria.hpp"
+# include "IMateriaSource.hpp"
 
-class MateriaSource {
+class MateriaSource : public IMateriaSource {
 
 	public:
 		

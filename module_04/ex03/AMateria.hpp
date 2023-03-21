@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:50:43 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 13:12:51 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:39:12 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "ICharacter.hpp"
 
+typedef class ICharacter ICharacter; 
+
 class AMateria {
 	
 	
@@ -22,7 +24,7 @@ class AMateria {
 	
 		AMateria(void);
 		AMateria(AMateria const & rhs);
-		~AMateria(void);
+		virtual ~AMateria(void);
 
 		AMateria&	operator=(AMateria const & rhs);
 

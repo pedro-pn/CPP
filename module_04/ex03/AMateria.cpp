@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:55:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 19:32:17 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:56:22 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ std::string const & AMateria::getType(void) const {
 }
 
 void	AMateria::use(ICharacter& target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() \
-	<< " *" << std::endl; 
+	(void)target;
+	return ;
 }

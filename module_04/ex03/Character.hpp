@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 18:55:06 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/20 19:39:29 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:45:56 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
 
 class Character : public ICharacter {
 
@@ -21,6 +23,7 @@ class Character : public ICharacter {
 
 		Character(void);
 		Character(std::string const & name);
+		Character(Character const &rhs);
 		~Character(void);
 
 		Character&	operator=(Character const &rhs);
