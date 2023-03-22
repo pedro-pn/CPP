@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 09:15:41 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/21 11:59:45 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:34:57 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Dog::~Dog(void) {
 
 Dog::Dog(Dog const &dog) : AAnimal() {
 	std::cout << "Dog copy constructor was called!" << std::endl;
+	this->brain = new Brain();
 	*this = dog;
 }
 
