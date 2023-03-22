@@ -1,4 +1,4 @@
-SOURCES = Bureaucrat.cpp
+SOURCES = Bureaucrat.cpp main.cpp
 NAME = main
 OBJS = $(SOURCES:.cpp=.o)
 CC = c++
