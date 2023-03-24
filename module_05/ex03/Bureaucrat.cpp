@@ -6,18 +6,20 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:57:23 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/24 09:34:38 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/24 17:20:51 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("Gerald"), _grade(150) {
-	std::cout << "Bureaucrat default constructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "Bureaucrat default constructor was called!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string const &name, int const grade) : _name(name), _grade(grade) {
-	std::cout << "Bureaucrat constructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "Bureaucrat constructor was called!" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
@@ -25,7 +27,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int const grade) : _name(name), 
 }
 
 Bureaucrat::~Bureaucrat(void) {
-	std::cout << "Bureaucrat destructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "Bureaucrat destructor was called!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &rhs) : _name(rhs._name) {

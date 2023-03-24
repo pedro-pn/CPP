@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 20:45:44 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 09:48:08 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/24 17:34:08 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,30 @@
 #include <iostream>
 
 Intern::Intern(void) {
-	std::cout << "Intern constructor was called!" << std::endl;	
+	if (DEBUG)
+		std::cout << "Intern constructor was called!" << std::endl;	
 }
 
 Intern::~Intern(void) {
-	std::cout << "Intern destructor was called!" << std::endl;	
+	if (DEBUG)
+		std::cout << "Intern destructor was called!" << std::endl;	
 }
 
 Intern::Intern(Intern const &rhs) {
-	std::cout << "Intern copy constructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "Intern copy constructor was called!" << std::endl;
 	*this = rhs;
 }
 
 Intern&	Intern::operator=(Intern const &rhs) {
-	std::cout << "Intern assigment operator was called!" << std::endl;	
+	if (DEBUG)
+		std::cout << "Intern assigment operator was called!" << std::endl;	
 	if (this == &rhs)
 		return (*this);
 	return (*this);
 }
 
-AForm	*Intern::makeForm(std::string const &form, std::string const &target) const {
+AForm	*Intern::makeForm(std::string const &form, std::string const &target) {
 	try {
 		return (this->createForm(form, target));
 	}	catch (AForm::FormNotExistException &e) {
@@ -45,27 +49,27 @@ AForm	*Intern::makeForm(std::string const &form, std::string const &target) cons
 	}
 }
 
-AForm	*Intern::createForm(std::string const &form, std::string const &target) const {
+AForm	*Intern::createForm(std::string const &form, std::string const &target) {
 	std::string	forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-	int	index;
-	for (index = 0; index < 3; index++) {
-		if (form == forms[index])
-			break ;
+	AForm	*(Intern::*formsMakers[3])(std::string const &) = {
+		&Intern::_makeShruberryCreationForm,
+		&Intern::_makeRobotomyRequestForm,
+		&Intern::_makePresidentialParonForm};
+	for (int index = 0; index < 3; index++) {
+		if (form == forms[index]){
+			std::cout << "Intern creates " << form << std::endl;
+			return ((this->*formsMakers[index])(target));
+		}
 	}
-	switch (index) {
-		case (0):
-			std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
-			return (new ShrubberyCreationForm(target));
-		case (1):
-			std::cout << "Intern creates RobotomyRequestForm" << std::endl;
-			return (new RobotomyRequestForm(target));
-		case (2):
-			std::cout << "Intern creates PresidentialPardonForm" << std::endl;
-			return (new PresidentialPardonForm(target));
-		default:
-			std::cout << "Stupid Intern doesn't know " << form << std::endl;
-			throw AForm::FormNotExistException();
-	}
+	throw (AForm::FormNotExistException());
 }
 
-
+AForm	*Intern::_makeShruberryCreationForm(std::string const &target) {
+	return (new ShrubberyCreationForm(target));
+}
+AForm	*Intern::_makeRobotomyRequestForm(std::string const &target) {
+	return (new RobotomyRequestForm(target));
+}
+AForm	*Intern::_makePresidentialParonForm(std::string const &target) {
+	return (new PresidentialPardonForm(target));
+}

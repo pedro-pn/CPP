@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:04:37 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 09:28:01 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/24 17:22:29 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 #include <iostream>
 
 AForm::AForm(void) : _name("none"), _signed(false), _gradeToSign(1), _gradeToExecute(1) {
-	std::cout << "AForm default constructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "AForm default constructor was called!" << std::endl;
 }
 
 AForm::AForm(std::string const &name, int const gradeToSign, int const gradeToExecute) :
 		_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-	std::cout << "AForm constructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "AForm constructor was called!" << std::endl;
 }
 
 AForm::AForm(AForm const &rhs) :
 	_name(rhs._name), _signed(rhs._signed), _gradeToSign(rhs._gradeToSign), _gradeToExecute(rhs._gradeToExecute){
-	std::cout << "AForm copy constructor was called" << std::endl;
+	if (DEBUG)
+		std::cout << "AForm copy constructor was called" << std::endl;
 	*this = rhs;
 
 }
 AForm::~AForm(void) {
-	std::cout << "AForm destructor was called!" << std::endl;
+	if (DEBUG)
+		std::cout << "AForm destructor was called!" << std::endl;
 }
 
 AForm&	AForm::operator=(AForm const &rhs) {

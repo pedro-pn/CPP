@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 16:21:18 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 09:50:06 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/24 17:48:19 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "Intern.hpp"
 
 int main(void) {
+	
+	// ==================EX01======================
+	std::cout << "===== EX01=====" << std::endl << std::endl;
 	try {
 		Bureaucrat bu = Bureaucrat("Robert", 200);
 		std::cout << bu << std::endl;
@@ -71,7 +74,10 @@ int main(void) {
 	std::cout << buHigh << std::endl;
 	std::cout << buLow << std::endl;
 	
-	std::cout << std::endl << "===== EX02 =====" << std::endl;
+	std::cout << std::endl << "=======END OF EX01======" << std::endl;
+	
+	// ====================EX02 TESTS===================
+	std::cout << std::endl << "===== EX02 =====" << std::endl << std::endl;
 	
 	AForm	*shubery = new ShrubberyCreationForm("home");
 	AForm	*robotomy = new RobotomyRequestForm("furuleibe");
@@ -97,6 +103,10 @@ int main(void) {
 	buHigh.executeForm(*robotomy);
 	buHigh.executeForm(*pardon);
 	
+	std::cout << std::endl << "==========END OF EX02========" << std::endl << std::endl;
+	// ===============EX03=================
+	
+	std::cout << "==========EX03========" << std::endl << std::endl;
 	Intern intern;
 	AForm	*form1;
 	AForm	*form2;
@@ -119,9 +129,14 @@ int main(void) {
 	buHigh.executeForm(*form2);
 	buHigh.executeForm(*form3);
 	
+	std::cout << std::endl << "==========END OF EX03========" << std::endl << std::endl;
+	
 	delete shubery;
 	delete robotomy;
 	delete pardon;
+	delete form1;
+	delete form2;
+	delete form3;
 	
 	return (0);
 }

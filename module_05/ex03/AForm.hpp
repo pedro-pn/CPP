@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:50:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 09:28:18 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/24 17:31:01 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <string>
 # include "Bureaucrat.hpp"
+# ifndef DEBUG
+#  define DEBUG 0
+#  endif
 
 typedef class Bureaucrat	Bureaucrat;
 
