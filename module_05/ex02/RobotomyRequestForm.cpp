@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:14:06 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/23 20:12:22 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:27:36 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	RobotomyRequestForm::beExecuted(void) const {
 	if (rand() % 2 == 0)
 		std::cout << this->_target << " has been successfully robotomized" << std::endl;
 	else
-		std::cout << "OOPS, it looks like "<<this->_target << " is not here anymore!" << std::endl;
+		std::cout << "OOPS, it looks like " << this->_target << " is not here anymore!" << std::endl;
 }
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs) {
