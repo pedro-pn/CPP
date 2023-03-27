@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:04:37 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/23 20:13:32 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 11:56:37 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ AForm::AForm(void) : _name("none"), _signed(false), _gradeToSign(1), _gradeToExe
 	std::cout << "AForm default constructor was called!" << std::endl;
 }
 
-AForm::AForm(std::string const &name, int const gradeToSign, int const gradeToExecute) :
+AForm::AForm(std::string const &name, int const gradeToSign, int const gradeToExecute) : 
 		_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-	std::cout << "AForm constructor was called!" << std::endl;
+	std::cout << "Form constructor was called!" << std::endl;
+	if (gradeToExecute > 150 || gradeToExecute > 150)
+		throw AForm::GradeTooLowException();
+	if (gradeToExecute < 1 || gradeToExecute < 1)
+		throw AForm::GradeTooHighException();
 }
 
 AForm::AForm(AForm const &rhs) :

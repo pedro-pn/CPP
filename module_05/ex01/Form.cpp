@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 20:04:37 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/23 20:20:02 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 11:56:13 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ Form::Form(void) : _name("none"), _signed(false), _gradeToSign(1), _gradeToExecu
 Form::Form(std::string const &name, int const gradeToSign, int const gradeToExecute) : 
 		_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 	std::cout << "Form constructor was called!" << std::endl;
+	if (gradeToExecute > 150 || gradeToExecute > 150)
+		throw Form::GradeTooLowException();
+	if (gradeToExecute < 1 || gradeToExecute < 1)
+		throw Form::GradeTooHighException();
 }
 
 Form::Form(Form const &rhs) :
