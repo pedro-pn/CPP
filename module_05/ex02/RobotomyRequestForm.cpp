@@ -6,13 +6,14 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:14:06 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/27 10:27:36 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 19:25:52 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
 #include <iostream>
+#include <time.h>
 
 RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequestForm", 72, 45), _target("none") {
 	std::cout << "RobotomyRequestForm default constructor was called!" << std::endl;
@@ -33,7 +34,8 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &rhs) : AForm
 
 void	RobotomyRequestForm::beExecuted(void) const {
 	std::cout << "BZZZZZZZZZZZZZZZZZzzzzzzzzzzZZZZZZZZZZZZZ plec!" << std::endl;
-	if (rand() % 2 == 0)
+	std::srand(time(0));
+	if (std::rand() % 2 == 0)
 		std::cout << this->_target << " has been successfully robotomized" << std::endl;
 	else
 		std::cout << "OOPS, it looks like " << this->_target << " is not here anymore!" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 19:14:06 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 17:21:45 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 19:29:29 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &rhs) : AForm
 
 void	RobotomyRequestForm::beExecuted(void) const {
 	std::cout << "BZZZZZZZZZZZZZZZZZzzzzzzzzzzZZZZZZZZZZZZZ plec!" << std::endl;
+	std::srand(time(0));
 	if (rand() % 2 == 0)
 		std::cout << this->_target << " has been successfully robotomized" << std::endl;
 	else
