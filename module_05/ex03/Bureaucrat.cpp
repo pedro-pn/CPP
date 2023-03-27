@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:57:23 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/24 17:20:51 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 10:19:49 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ void	Bureaucrat::executeForm(AForm const &form) const {
 // exceptions
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Ops, grade is too high!");
+	return ("grade is too high!");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Ops, grade is too Low!");
+	return ("grade is too Low!");
 }
 
 // ostream overload
