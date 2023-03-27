@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 20:45:44 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/24 17:34:08 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 12:11:03 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Intern&	Intern::operator=(Intern const &rhs) {
 AForm	*Intern::makeForm(std::string const &form, std::string const &target) {
 	try {
 		return (this->createForm(form, target));
-	}	catch (AForm::FormNotExistException &e) {
+	}	catch (std::exception &e) {
 		std::cout << "Intern couldn't create " << form << " because " << e.what() << std::endl;
 		return (NULL);
 	}

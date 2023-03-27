@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:57:23 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/27 10:17:52 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 12:06:09 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Bureaucrat::decrementGrade(int const decrement) {
 void	Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
-	} catch (Form::GradeTooLowException &e) {
+	} catch (std::exception &e) {
 		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }

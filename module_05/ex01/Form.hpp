@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 19:50:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/23 20:20:44 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 12:01:43 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ class Form {
 	
 	public:
 
-		class GradeTooHighException : std::exception {
+		class GradeTooHighException : public std::exception {
 
 			public:
 
 				const char  *what() const throw();
 		};
 
-		class GradeTooLowException : std::exception {
+		class GradeTooLowException : public std::exception {
 
 			public:
 

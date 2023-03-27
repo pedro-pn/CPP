@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 11:45:03 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/03/22 16:57:59 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/27 12:00:48 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ class Bureaucrat {
 
 	public:
 
-		class GradeTooHighException : std::exception {
+		class GradeTooHighException : public std::exception {
 			
 			public:
 				
 				virtual const char *what() const throw();
 		};
 
-		class GradeTooLowException : std::exception {
+		class GradeTooLowException : public std::exception {
 			
 			public:
 				
