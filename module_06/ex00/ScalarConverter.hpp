@@ -6,13 +6,16 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:52:38 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 15:04:28 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/29 18:07:54 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
+# ifndef DEBUG
+#  define DEBUG 1
+# endif
 # include <string>
 
 class ScalarConverter {
@@ -24,18 +27,13 @@ class ScalarConverter {
 		
 		ScalarConverter&	operator=(ScalarConverter const &rhs);
 		static void convert(std::string const &literal);
-		
-		static bool	is_char(std::string const &literal);
-		static bool	is_int(std::string const &literal);
-		static bool	is_float(std::string const &literal);
-		static bool	is_double(std::string const &literal);
 	
-	private:
+	protected:
 	
-		// bool	is_char(std::string const &literal);
-		// bool	is_int(std::string const &literal);
-		// bool	is_float(std::string const &literal);
-		// bool	is_double(std::string const &literal);
+		bool	_isChar(std::string const &literal);
+		bool	_isInt(std::string const &literal);
+		bool	_isFloat(std::string const &literal);
+		bool	_isDouble(std::string const &literal);
 };
 
 #endif
