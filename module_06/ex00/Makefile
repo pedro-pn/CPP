@@ -1,5 +1,5 @@
 SOURCES = ScalarConverter.cpp
-NAME = main
+NAME = converter
 TEST = test
 
 MAIN = main.cpp
