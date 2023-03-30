@@ -6,12 +6,12 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:59:47 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/30 11:29:41 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:12:57 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef B_HPP
-# define B_HPSP
+# define B_HPP
 
 # include "Base.hpp"
 

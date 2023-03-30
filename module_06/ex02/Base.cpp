@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 10:58:27 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/30 11:41:25 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/30 13:09:31 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,19 @@ void	identify(Base *p) {
 }
 void	identify(Base &p) {
 	try {
-		dynamic_cast<A &>(p);
+		(void)dynamic_cast<A &>(p);
 		std::cout << "p is a reference to a A class" << std::endl;
 		return ;
 	} catch (std::exception &e) {
 	}
 	try {
-		dynamic_cast<B &>(p);
+		(void)dynamic_cast<B &>(p);
 		std::cout << "p is a reference to a B class" << std::endl;
 		return ;
 	} catch (std::exception &e) {
 	}
 	try {
-		dynamic_cast<C &>(p);
+		(void)dynamic_cast<C &>(p);
 		std::cout << "p is a reference to a C class" << std::endl;
 		return ;
 	} catch (std::exception &e) {
