@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:52:38 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/30 09:49:13 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/30 20:20:27 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ typedef struct s_types {
 class ScalarConverter {
 	
 	public:
-		ScalarConverter(void);
-		ScalarConverter(ScalarConverter const &rhs);
 		~ScalarConverter(void);
 		
 		ScalarConverter&	operator=(ScalarConverter const &rhs);
@@ -44,6 +42,9 @@ class ScalarConverter {
 	
 	protected:
 	
+		ScalarConverter(void);
+		ScalarConverter(ScalarConverter const &rhs);
+		
 		char	_char;
 		int		_int;
 		float	_float;
