@@ -6,13 +6,17 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:59:40 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 18:07:53 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/29 21:00:23 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 #include <iostream>
 #include <ctype.h>
+#include <stdlib.h>
+#include <cstdlib>
+#include <cmath>
+#include <iomanip>
 
 ScalarConverter::ScalarConverter(void) {
 	if (DEBUG)
@@ -38,7 +42,39 @@ ScalarConverter&	ScalarConverter::operator=(ScalarConverter const & rhs) {
 }
 
 void	ScalarConverter::convert(std::string const &literal) {
-	(void)literal;
+	switch (ScalarConverter::assertType(literal)) {
+		case (CHAR_TYPE):
+			ScalarConverter::convertChar(literal);			
+			break ;
+		case (INT_TYPE):
+			ScalarConverter::convertInt(literal);			
+			break ;
+		case (FLOAT_TYPE):
+			ScalarConverter::convertFloat(literal);			
+			break ;
+		case (DOUBLE_TYPE):
+			ScalarConverter::convertDouble(literal);			
+			break ;
+		default:
+			std::cout << "Invalid literal!" << std::endl;
+			break ;
+	}
+}
+
+int		ScalarConverter::assertType(std::string const &literal) {
+	int	result = 0;
+	bool	(*isTypes[4])(std::string const &) = {
+		&ScalarConverter::_isChar,
+		&ScalarConverter::_isInt,
+		&ScalarConverter::_isFloat,
+		&ScalarConverter::_isDouble};
+
+	for ( ;  result < 4; result++) {
+		if((*isTypes[result])(literal)) {
+			break ;
+		}
+	}
+	return (result);
 }
 
 bool	ScalarConverter::_isChar(std::string const &literal) {
@@ -102,4 +138,73 @@ bool	ScalarConverter::_isDouble(std::string const &literal) {
 	if (doubleDot == 0 || literal[iterator - 1] == '.')
 		return (false);
 	return (true);
+}
+
+void	ScalarConverter::convertChar(std::string const &literal) {
+	t_types	types;
+	
+	types._char = static_cast<char>(literal[0]);
+	types._int = static_cast<int>(types._char);
+	types._float = static_cast<float>(types._char);
+	types._double = static_cast<double>(types._char);
+	
+	std::cout << "Literal: " << literal << " (char type)" << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	ScalarConverter::printConvertion(types);
+}
+
+void	ScalarConverter::convertInt(std::string const &literal) {
+	t_types	types;
+	
+	types._int = std::atoi(literal.c_str());
+	if (types._int == 0 && literal.length() != 1) {
+		std::cerr << "Error when casting '" << literal << "' to int: integer overflow" << std::endl;
+		return ;
+	}
+	types._char = static_cast<char>(types._int);
+	types._float = static_cast<float>(types._int);
+	types._double = static_cast<double>(types._int);
+	
+	std::cout << "Literal: " << literal << " (int type)" << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	ScalarConverter::printConvertion(types);
+}
+
+void	ScalarConverter::convertFloat(std::string const &literal) {
+	t_types	types;
+	
+	types._float = static_cast<float>(std::atof(literal.c_str()));
+	if (isinff(types._float) || isnanf(types._float)) {
+		std::cerr << "Error when casting '" << literal << "' to float: float overflow" << std::endl;
+		return ;
+	}
+	types._char = static_cast<char>(types._float);
+	types._int = static_cast<int>(types._float);
+	types._double = static_cast<double>(types._float);
+	
+	std::cout << "Literal: " << literal << " (float type)" << std::endl;
+	ScalarConverter::printConvertion(types);
+}
+
+void	ScalarConverter::convertDouble(std::string const &literal) {
+	t_types	types;
+	
+	types._double = std::atof(literal.c_str());
+	if (isinfl(types._double) || isnanl(types._double)) {
+		std::cerr << "Error when casting '" << literal << "' to double: double overflow" << std::endl;
+		return ;
+	}
+	types._char = static_cast<char>(types._double);
+	types._int = static_cast<int>(types._double);
+	types._float = static_cast<float>(types._double);
+	
+	std::cout << "Literal: " << literal << " (double type)" << std::endl;
+	ScalarConverter::printConvertion(types);
+}
+
+void	ScalarConverter::printConvertion(t_types const types) {
+	std::cout << "Char: '" << types._char << "'" << std::endl;
+	std::cout << "int: " << types._int  << std::endl;
+	std::cout << "float: " << types._float << 'f' << std::endl;
+	std::cout << "double: " << types._double  << std::endl;
 }

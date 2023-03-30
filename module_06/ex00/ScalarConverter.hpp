@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:52:38 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 18:07:54 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/29 20:49:14 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@
 #  define DEBUG 1
 # endif
 # include <string>
+
+enum e_types {
+	CHAR_TYPE = 0,
+	INT_TYPE = 1,
+	FLOAT_TYPE = 2,
+	DOUBLE_TYPE = 3
+};
+
+typedef struct s_types {
+	char	_char;
+	int		_int;
+	float	_float;
+	double	_double;
+}			t_types;
 
 class ScalarConverter {
 	
@@ -30,10 +44,22 @@ class ScalarConverter {
 	
 	protected:
 	
-		bool	_isChar(std::string const &literal);
-		bool	_isInt(std::string const &literal);
-		bool	_isFloat(std::string const &literal);
-		bool	_isDouble(std::string const &literal);
+		char	_char;
+		int		_int;
+		float	_float;
+		double	_double;
+	
+		static bool	_isChar(std::string const &literal);
+		static bool	_isInt(std::string const &literal);
+		static bool	_isFloat(std::string const &literal);
+		static bool	_isDouble(std::string const &literal);
+		static int	assertType(std::string const &literal);
+		
+		static void	convertChar(std::string const &literal);
+		static void	convertInt(std::string const &literal);
+		static void	convertFloat(std::string const &literal);
+		static void	convertDouble(std::string const &literal);
+		static void	printConvertion(t_types const types);
 };
 
 #endif

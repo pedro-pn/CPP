@@ -5,3 +5,5 @@ phonebook
 account
 *.log
 zombie
+tests2.cpp
+a.out
