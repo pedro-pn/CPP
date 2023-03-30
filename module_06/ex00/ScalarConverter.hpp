@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:52:38 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 21:22:11 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/30 09:49:13 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ class ScalarConverter {
 		static bool	_isInt(std::string const &literal);
 		static bool	_isFloat(std::string const &literal);
 		static bool	_isDouble(std::string const &literal);
+		static bool	checkOverflow(std::string const &literal);
 		static int	assertType(std::string const &literal);
 		
 		static void	convertChar(std::string const &literal);

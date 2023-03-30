@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:59:40 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 21:51:23 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/30 09:49:22 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,11 +160,11 @@ void	ScalarConverter::convertChar(std::string const &literal) {
 void	ScalarConverter::convertInt(std::string const &literal) {
 	t_types	types;
 	
-	types._int = std::atoi(literal.c_str());
-	if (types._int == -1 && literal.length() > 1) {
+	if (checkOverflow(literal)) {
 		std::cerr << "Error when casting '" << literal << "' to int: integer overflow" << std::endl;
 		return ;
 	}
+	types._int = std::atoi(literal.c_str());
 	types._char = static_cast<char>(types._int);
 	types._float = static_cast<float>(types._int);
 	types._double = static_cast<double>(types._int);
@@ -209,4 +209,13 @@ void	ScalarConverter::printConvertion(t_types const types) {
 		std::cout << "int: " << types._int  << std::endl;
 	std::cout << "float: " << types._float << 'f' << std::endl;
 	std::cout << "double: " << types._double  << std::endl;
+}
+
+bool	ScalarConverter::checkOverflow(std::string const &literal) {
+	long	n;
+	
+	n = std::atol(literal.c_str());
+	if (n > __INT_MAX__ || n < (-__INT_MAX__ - 1))
+		return (true);
+	return (false);
 }

@@ -11,7 +11,7 @@ MAIN_TOBJ = ${MAIN_T:.cpp=.o}
 OBJS = $(SOURCES:.cpp=.o)
 
 CC = c++
-FLAGS := -Werror -Wextra -Wall -std=c++98 -g
+FLAGS := -Werror -Wextra -Wall -std=c++98
 DEBUG = -D DEBUG=0
 
 all: ${NAME}
