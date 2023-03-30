@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 11:59:40 by pedro             #+#    #+#             */
-/*   Updated: 2023/03/29 21:45:29 by pedro            ###   ########.fr       */
+/*   Updated: 2023/03/29 21:51:23 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ void	ScalarConverter::convertInt(std::string const &literal) {
 	t_types	types;
 	
 	types._int = std::atoi(literal.c_str());
-	if (types._int == 0 && literal.length() != 1) {
+	if (types._int == -1 && literal.length() > 1) {
 		std::cerr << "Error when casting '" << literal << "' to int: integer overflow" << std::endl;
 		return ;
 	}
@@ -170,14 +170,7 @@ void	ScalarConverter::convertInt(std::string const &literal) {
 	types._double = static_cast<double>(types._int);
 	
 	std::cout << "Literal: " << literal << " (int type)" << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
-	if (isprint(types._int))
-		std::cout << "Char: '" << types._char << "'" << std::endl;
-	else
-		std::cout << "Char: " << "Not displayable" << std::endl;
-	std::cout << "int: " << types._int  << std::endl;
-	std::cout << "float: " << types._float << 'f' << std::endl;
-	std::cout << "double: " << types._double  << std::endl;
+	ScalarConverter::printConvertion(types);
 }
 
 void	ScalarConverter::convertFloat(std::string const &literal) {
@@ -189,16 +182,7 @@ void	ScalarConverter::convertFloat(std::string const &literal) {
 	types._double = static_cast<double>(types._float);
 	
 	std::cout << "Literal: " << literal << " (float type)" << std::endl;
-	if (types._int >= 32 && types._int < 127)
-		std::cout << "Char: '" << types._char << "'" << std::endl;
-	else
-		std::cout << "Char: " << "Not displayable" << std::endl;
-	if (isnanf(types._float) || isinff(types._float))
-		std::cout << "int: " << "impossible"  << std::endl;
-	else
-		std::cout << "int: " << types._int  << std::endl;
-	std::cout << "float: " << types._float << 'f' << std::endl;
-	std::cout << "double: " << types._double  << std::endl;
+	ScalarConverter::printConvertion(types);
 }
 
 void	ScalarConverter::convertDouble(std::string const &literal) {
@@ -210,6 +194,11 @@ void	ScalarConverter::convertDouble(std::string const &literal) {
 	types._float = static_cast<float>(types._double);
 	
 	std::cout << "Literal: " << literal << " (double type)" << std::endl;
+	ScalarConverter::printConvertion(types);
+}
+
+void	ScalarConverter::printConvertion(t_types const types) {
+	std::cout << std::fixed << std::setprecision(2);
 	if (types._int >= 32 && types._int < 127)
 		std::cout << "Char: '" << types._char << "'" << std::endl;
 	else
@@ -218,13 +207,6 @@ void	ScalarConverter::convertDouble(std::string const &literal) {
 		std::cout << "int: " << "impossible"  << std::endl;
 	else
 		std::cout << "int: " << types._int  << std::endl;
-	std::cout << "float: " << types._float << 'f' << std::endl;
-	std::cout << "double: " << types._double  << std::endl;
-}
-
-void	ScalarConverter::printConvertion(t_types const types) {
-	std::cout << "Char: '" << types._char << "'" << std::endl;
-	std::cout << "int: " << types._int  << std::endl;
 	std::cout << "float: " << types._float << 'f' << std::endl;
 	std::cout << "double: " << types._double  << std::endl;
 }
