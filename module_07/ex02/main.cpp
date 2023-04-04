@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 20:50:20 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/03 22:34:21 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/04 10:15:55 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,15 @@ int	main(void) {
 	charArray[5] = 'a';
 	
 	charArray.print();
+	
+	// EMPTY ARRAY
+	std::cout << "\n ===== Empty array test =====\n" << std::endl;
+	Array<int>	teste_null1;
+	Array<int>	teste_null2(0);
+	
+	teste_null1.print();
+	teste_null2.print();
+	
 
 	return (0);
 }

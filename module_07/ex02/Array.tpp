@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 20:27:36 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/03 22:33:24 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/04 10:13:37 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array(void) : _size(1) {
-	this->_array = new T[1];
+Array<T>::Array(void) : _array(NULL), _size(0) {
+	std::cout << "Array default constructor was called!" << std::endl;
 }
 
 template<typename T>
-Array<T>::Array(unsigned int n) : _size(n) {
+Array<T>::Array(unsigned int n) : _array(NULL), _size(n) {
 	std::cout << "Array constructor was called!" << std::endl;
-	this->_array = new T[n];
+	if (n > 0)
+		this->_array = new T[n];
 }
 
 template<typename T>
@@ -31,9 +32,10 @@ Array<T>::~Array(void) {
 }
 
 template<typename T>
-Array<T>::Array(Array<T> const &rhs) : _size(rhs.size()) {
+Array<T>::Array(Array<T> const &rhs) : _array(NULL), _size(rhs.size()) {
 	std::cout << "Array copy constructor was called!" << std::endl;
-	this->_array = new T[rhs.size()];
+	if (rhs.size() > 0)
+		this->_array = new T[rhs.size()];
 	*this = rhs;
 }
 
