@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 12:48:45 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/05 19:13:52 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/05 22:54:51 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	main(void) {
 	} catch (std::exception &e) {
 		std::cerr << "Could not fill test: " << e.what() << std::endl;
 	}
-	std::cout << test.longestSpan() << std::endl;
-	std::cout << test.shortestSpan() << std::endl;
-	std::cout << test.longestSpan() << std::endl;
-	std::cout << test.shortestSpan() << std::endl;
+	std::cout << "test longest span: " << test.longestSpan() << std::endl;
+	std::cout << "test shortest span: " << test.shortestSpan() << std::endl;
+	std::cout << "test longest span: " << test.longestSpan() << std::endl;
+	std::cout << "test shortest span: " << test.shortestSpan() << std::endl;
 	
 	// test addMany and exception cases
 	std::cout << "\n====ADDMANY AND EXCEPTIONS====\n" << std::endl;
@@ -53,10 +53,10 @@ int	main(void) {
 	}
 	test_2.addMany(array, array+5);
 	
-	std::cout << test_2.longestSpan() << std::endl;
-	std::cout << test_2.shortestSpan() << std::endl;
-	std::cout << test_2.longestSpan() << std::endl;
-	std::cout << test_2.shortestSpan() << std::endl;
+	std::cout << "test_2 longest_span: " << test_2.longestSpan() << std::endl;
+	std::cout << "test_2 shortest_span: " << test_2.shortestSpan() << std::endl;
+	std::cout << "test_2 longest_span: " << test_2.longestSpan() << std::endl;
+	std::cout << "test_2 shortest_span: " << test_2.shortestSpan() << std::endl;
 	
 	try {
 		test_2.addMany(array, array+5);
