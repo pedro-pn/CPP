@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 10:54:28 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/06 15:39:46 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:31:45 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ MutantStack<T>::~MutantStack(){
 
 template <typename T>
 MutantStack<T>&	MutantStack<T>::operator=(MutantStack<T> const &rhs) {
+	this->c = rhs.c;
 	return (*this);
 }
 
