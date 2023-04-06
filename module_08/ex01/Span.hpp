@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:41:47 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/05 19:42:19 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/05 22:52:55 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ class Span {
 		void	addMany(T begin, T end) {
 			if ((std::distance(begin, end) + this->_vec.size()) > this->_capacity)
 				throw Span::InsufficientSizeException();
-			this->_vec.insert(this->_vec.begin(), begin, end);
+			this->_vec.insert(this->_vec.end(), begin, end);
 		}
 		
 	private:
