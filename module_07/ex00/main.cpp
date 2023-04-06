@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:19:20 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/03 17:46:44 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/05 22:55:19 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	main() {
 	std::cout << "<int test> Min value between 50 and 20: " << ::min<int>(50, 20) << std::endl;
 
 	std::cout << "<int test> Max value between 20 and 20: " << ::max<int>(20, 20) << std::endl;
-	std::cout << "<int test> Max value between 20 and 20: " <<  ::min<int>(20, 20) << std::endl;
+	std::cout << "<int test> Min value between 20 and 20: " <<  ::min<int>(20, 20) << std::endl;
 
 	std::cout << "<double test> Max value between 20.5 and 20.1: " << ::max<double>(20.5, 20.1) << std::endl;
-	std::cout << "<char test> Max value between 'd' and 'a': " << ::min<char>('d', 'a') << std::endl;
+	std::cout << "<char test> Min value between 'd' and 'a': " << ::min<char>('d', 'a') << std::endl;
 
 	return (0);
 }
