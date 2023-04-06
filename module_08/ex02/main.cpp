@@ -6,19 +6,22 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 11:04:43 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/06 12:45:20 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/06 12:56:37 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <stack>
 #include "MutantStack.hpp"
+#include <list>
 
 int	main(void) {
+	
+	std::cout << "\n========Test with MutantStack =======\n" << std::endl;
+	
 	MutantStack<int> mstack;
-	std::cout << mstack.size() << std::endl;
+	
 	mstack.push(5);
-	std::cout << mstack.size() << std::endl;
 	mstack.push(17);
 	std::cout << mstack.top() << std::endl;
 	mstack.pop();
@@ -34,10 +37,36 @@ int	main(void) {
 	--it;
 	while (it != ite)
 	{
-		std::cout << *it << std::endl;
-		++it;
+	std::cout << *it << std::endl;
+	++it;
 	}
 	std::stack<int> s(mstack);
+	
+	std::cout << "\n========Test with List =======\n" << std::endl;
+	
+	std::list<int> mlist;
+	
+	
+	mlist.push_back(5);
+	mlist.push_back(17);
+	std::cout << mlist.back() << std::endl;
+	mlist.pop_back();
+	std::cout << mlist.size() << std::endl;
+	mlist.push_back(3);
+	mlist.push_back(5);
+	mlist.push_back(737);
+	//[...]
+	mlist.push_back(0);
+	std::list<int>::iterator it2 = mlist.begin();
+	std::list<int>::iterator ite2 = mlist.end();
+	++it2;
+	--it2;
+	while (it2 != ite2)
+	{
+		std::cout << *it2 << std::endl;
+		++it2;
+	}
+	std::list<int> slist(mlist);
+	return 0;
 	return 0;
 }
-
