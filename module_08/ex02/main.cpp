@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 11:04:43 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/06 14:56:42 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/06 15:39:13 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,18 @@ int	main(void) {
 		++it2;
 	}
 	std::list<int> slist(mlist);
+	
+	std::cout << "reverse iterator" << std::endl;
+	
+	MutantStack<int>::reverse_iterator it3 = mstack.rbegin();
+	MutantStack<int>::reverse_iterator ite3 = mstack.rend();
+	++it3;
+	--it3;
+	while (it3 != ite3)
+	{
+		std::cout << *it3 << std::endl;
+		++it3;
+	}
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 22:48:17 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/06 14:31:58 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/06 15:40:05 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,14 @@ class MutantStack : public std::stack<T> {
 
 	public:
 
-		class iterator {
-
-			public:
-		
-				iterator(T *p);
-				iterator(iterator const &rhs);
-				~iterator(void);
-
-				iterator&	operator=(iterator const &rhs);
-				iterator&	operator++();
-				iterator	operator++(int);
-				iterator&	operator--();
-				iterator	operator--(int);
-				bool		operator==(iterator const &rhs) const;
-				bool		operator!=(iterator const &rhs) const;
-				T&			operator*();
-
-			private:
-
-				T	*_p;
-		};
+		typedef typename MutantStack<T>::container_type::iterator
+			iterator;
+		typedef typename MutantStack<T>::container_type::const_iterator
+			const_iterator;
+		typedef typename MutantStack<T>::container_type::reverse_iterator
+			reverse_iterator;
+		typedef typename MutantStack<T>::container_type::const_reverse_iterator
+			const_reverse_iterator;
 
 		MutantStack<T>();
 		MutantStack<T>(MutantStack const &rhs);
@@ -48,8 +35,14 @@ class MutantStack : public std::stack<T> {
 
 		MutantStack<T>&	operator=(MutantStack<T> const &rhs);
 
-		iterator	begin(void);
-		iterator	end(void);
+		iterator				begin(void);
+		iterator				end(void);
+		const_iterator			begin(void) const;
+		const_iterator			end(void) const;
+		reverse_iterator		rbegin(void);
+		reverse_iterator		rend(void);
+		const_reverse_iterator	rbegin(void) const;
+		const_reverse_iterator	rend(void) const;
 };
 
 # include "MutantStack.tpp"
