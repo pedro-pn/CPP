@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 11:04:43 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/06 15:39:13 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/06 16:37:28 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int	main(void) {
 	
+	// Mutant stack test
 	std::cout << "\n========Test with MutantStack =======\n" << std::endl;
 	
 	MutantStack<int> mstack;
@@ -42,6 +43,7 @@ int	main(void) {
 	}
 	std::stack<int> s(mstack);
 	
+	// Test with list
 	std::cout << "\n========Test with List =======\n" << std::endl;
 	
 	std::list<int> mlist;
@@ -68,7 +70,8 @@ int	main(void) {
 	}
 	std::list<int> slist(mlist);
 	
-	std::cout << "reverse iterator" << std::endl;
+	// reverse iterator test
+	std::cout << "\n=== Reverse Iterator test ===\n" << std::endl;
 	
 	MutantStack<int>::reverse_iterator it3 = mstack.rbegin();
 	MutantStack<int>::reverse_iterator ite3 = mstack.rend();
@@ -79,6 +82,43 @@ int	main(void) {
 		std::cout << *it3 << std::endl;
 		++it3;
 	}
+
+	// Constructors test
+	std::cout << "\n=== Copy contructor tests ===\n" << std::endl;
+	
+	MutantStack<int>	test;
+	
+	test.push(40);
+	test.push(41);
+	test.push(42);
+	test.push(43);
+	
+	MutantStack<int>	copy(test);
+	
+	MutantStack<int>::iterator	copy_it = copy.begin();
+	MutantStack<int>::iterator	copy_ite = copy.end();
+	
+	for (; copy_it != copy_ite; ++copy_it) {
+		std::cout << "copy: " << *copy_it << std::endl;
+	}
+	
+	// verify deep copy
+	std::cout << "\n=== Deep copy verification ===\n" << std::endl;
+	
+	copy_it = copy.begin();
+	*copy_it = 199;
+
+	MutantStack<int>::iterator	test_it = test.begin();
+	MutantStack<int>::iterator	test_ite = test.end();
+	
+	for (; copy_it != copy_ite; ++copy_it) {
+		std::cout << "copy: " << *copy_it << std::endl;
+	}
+	
+	for (; test_it != test_ite; ++test_it) {
+		std::cout << "test: " << *test_it << std::endl;
+	}
+	
 
 	return (0);
 }
