@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/11 12:10:21 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/11 12:19:16 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	BitcoinExchange::_openDataBase(std::string const &fileName) {
 	if (file.is_open() == false)
 		throw std::runtime_error("btc error: cannot open '" + fileName + "'");
 	std::getline(file, line);
+	if (_checkDbHeader(line) == false)
+		throw (std::runtime_error("btc error: invalid CSV header"));
 	while (std::getline(file, line)) {
 		try {
 			_getDbLine(line);
@@ -59,6 +61,8 @@ void	BitcoinExchange::processInput(std::string const &fileName) {
 	if (file.is_open() == false)
 		throw std::runtime_error("btc error: cannot open '" + fileName + "'");
 	std::getline(file, line);
+	if (_checkInputHeader(line) == false)
+		throw (std::runtime_error("btc error: invalid input header"));
 	while (std::getline(file, line)) {
 		try {
 			_getInputLine(line);
@@ -68,7 +72,19 @@ void	BitcoinExchange::processInput(std::string const &fileName) {
 		lineCount++;
 	}
 }
+
+bool	BitcoinExchange::_checkDbHeader(std::string const &line) {
+	if (line.compare("date,exchange_rate") != 0)
+		return (false);
+	return (true);
+}
  
+bool	BitcoinExchange::_checkInputHeader(std::string const &line) {
+	if (line.compare("data | value") != 0)
+		return (false);
+	return (true);
+}
+
 void	BitcoinExchange::_getDbLine(std::string const &line) {
 	std::string::const_iterator	begin;
 	std::string					date;

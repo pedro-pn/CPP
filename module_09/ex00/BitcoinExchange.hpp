@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/10 22:13:06 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/11 12:18:48 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ class BitcoinExchange {
 		// datbase CSV functions
 		void	_openDataBase(std::string const &fileName);
 		void	_getDbLine(std::string const &line);
+		bool	_checkDbHeader(std::string const &line);
 
+		bool	_checkInputHeader(std::string const &line);
 		bool	_checkDate(std::string const &date);
 		bool	_checkValue(long int value);
 		bool	_isInt(std::string const &n);
