@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/10 18:03:21 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/10 22:13:06 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define NOV 11
 # define DEC 12
 
-
 class BitcoinExchange {
 	
 	public:
@@ -40,21 +39,22 @@ class BitcoinExchange {
 
 		BitcoinExchange&	operator=(BitcoinExchange const &rhs);
 
-		void	openDataBase(std::string const &fileName);
-		void			testeDb(std::string const &data);
+		void	processInput(std::string const &fileName);
 
 	private:
 	
-		std::map<std::string, double>	_dataBase;
+		std::map<int, double>	_dataBase;
 		
-		bool			_checkDate(std::string const &date);
-		bool			_checkValue(std::string const &value);
-		bool			_isDouble(std::string const &data);
-		void			_getDbLine(std::string const &line);
-		bool			_checkInputLine(std::string const &fileName);
-		bool			_isInt(std::string const &n);
-		bool			_isValue(std::string const &literal);
+		// datbase CSV functions
+		void	_openDataBase(std::string const &fileName);
+		void	_getDbLine(std::string const &line);
 
+		bool	_checkDate(std::string const &date);
+		bool	_checkValue(long int value);
+		bool	_isInt(std::string const &n);
+		bool	_isValue(std::string const &literal);
+		double	_getClosestValue(int key);
+		void	_getInputLine(std::string const &line);
 };
 
 #endif

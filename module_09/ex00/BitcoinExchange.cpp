@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/10 18:27:14 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/10 22:12:32 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <cstdlib>
 
 BitcoinExchange::BitcoinExchange(std::string const &dataBase) {
-	this->openDataBase(dataBase);
+	this->_openDataBase(dataBase);
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &rhs) {
@@ -33,7 +33,7 @@ BitcoinExchange&	BitcoinExchange::operator=(BitcoinExchange const &rhs) {
 	return (*this);
 }
 
-void	BitcoinExchange::openDataBase(std::string const &fileName) {
+void	BitcoinExchange::_openDataBase(std::string const &fileName) {
 	std::ifstream	file(fileName.c_str());
 	std::string		line;
 	int				lineCount = 1;
@@ -45,7 +45,24 @@ void	BitcoinExchange::openDataBase(std::string const &fileName) {
 		try {
 			_getDbLine(line);
 		} catch (std::exception &e) {
-			std::cerr << "BBBBBBBBBBBBBBB" << std::endl;
+			std::cout << "Error: " << e.what() << std::endl;
+		}
+		lineCount++;
+	}
+}
+ 
+void	BitcoinExchange::processInput(std::string const &fileName) {
+	std::ifstream	file(fileName.c_str());
+	std::string		line;
+	int				lineCount = 1;
+
+	if (file.is_open() == false)
+		throw std::runtime_error("btc error: cannot open '" + fileName + "'");
+	std::getline(file, line);
+	while (std::getline(file, line)) {
+		try {
+			_getInputLine(line);
+		} catch (std::exception &e) {
 			std::cout << "Error: " << e.what() << std::endl;
 		}
 		lineCount++;
@@ -68,7 +85,53 @@ void	BitcoinExchange::_getDbLine(std::string const &line) {
 	value = line.substr(comma + 1, line.length() - comma - 1);
 	if (_isValue(value) == false) 
 		throw std::runtime_error("bad format => " + value);
-	_dataBase.insert(std::pair<std::string, double>(date, std::atof(value.c_str())));
+	date.erase(date.begin() + 4);
+	date.erase(date.begin() + 6);
+	_dataBase.insert(std::pair<int, double>(std::atoi(date.c_str()), std::atof(value.c_str())));
+}
+
+void	BitcoinExchange::_getInputLine(std::string const &line) {
+	std::string::const_iterator	begin;
+	std::string					date;
+	std::string					value;
+	std::string					formatDate;
+	size_t						pipe;
+	long int					lvalue;
+	int							key;
+
+	pipe = line.find(" | ");
+	if (pipe == std::string::npos)
+		throw (std::runtime_error("bad format => " + line));
+	begin = line.begin();
+	date = line.substr(0, pipe);
+	if (_checkDate(date) == false) 
+		throw std::runtime_error("bad data format => " + date);
+	value = line.substr(pipe + 3, line.length() - pipe - 3);
+	if (_isValue(value) == false) 
+		throw std::runtime_error("bad format => " + value);
+	lvalue = std::atof(value.c_str());
+	if (lvalue > __INT_MAX__ || _checkValue(lvalue) == false)
+		throw std::runtime_error("bad format => '" + value + "': too large number");
+	if (lvalue < 0)
+		throw std::runtime_error("bad format => '" + value + "': not a positive number");
+	formatDate = date;
+	formatDate.erase(formatDate.begin() + 4);
+	formatDate.erase(formatDate.begin() + 6);
+	key = std::atoi(formatDate.c_str());
+	std::cout << date << " => " << value << " = " << std::atof(value.c_str()) * _getClosestValue(key) << std::endl;
+}
+
+double	BitcoinExchange::_getClosestValue(int key) {
+	std::map<int, double>::iterator	it = this->_dataBase.begin();
+	int	lowerKey;
+
+	if (key < it->first)
+		return (this->_dataBase[it->first]);
+	for (; it->first < key; ++it) {
+		if (it->first <= key)
+			lowerKey = it->first;
+		}
+	return (this->_dataBase[lowerKey]);
 }
 
 bool	BitcoinExchange::_checkDate(std::string const &date) {
@@ -100,7 +163,7 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 	if (this->_isInt(sday) == false)
 		return (false);
 	day = std::atoi(sday.c_str());
-	if (month < 1 && month > 12)
+	if (month < 1 || month > 12)
 		return (false);
 	if (month == JAN || month == MAR || month == MAY || month == JUL
 		|| month == AUG || month == OCT || month == DEC) {
@@ -116,16 +179,10 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 	return (true);
 }
 
-bool	BitcoinExchange::_checkValue(std::string const &value) {
-	double	dvalue = std::atof(value.c_str());
-
-	if (dvalue < 0 || dvalue > 1000)
+bool	BitcoinExchange::_checkValue(long int value) {
+	if (value < 0 || value > 1000)
 		return (false);
 	return (true);
-}
-
-void	BitcoinExchange::testeDb(std::string const &data) {
-	std::cout << this->_dataBase[data] << std::endl;
 }
 
 bool	BitcoinExchange::_isInt(std::string const &n) {
@@ -141,9 +198,11 @@ bool	BitcoinExchange::_isInt(std::string const &n) {
 }
 
 bool	BitcoinExchange::_isValue(std::string const &literal) {
-	size_t	doubleDot = 0;
-	size_t	iterator = 0;
+	size_t		doubleDot = 0;
+	size_t		iterator = 0;
 	
+	if (literal[iterator] == '-' || literal[iterator] == '+')
+		iterator++;
 	for ( ; iterator < literal.length(); iterator++) {
 		if (literal[iterator] == '.' && doubleDot == 0) {
 			doubleDot += 1;

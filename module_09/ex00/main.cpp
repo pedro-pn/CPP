@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 10:19:09 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/10 15:36:50 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/10 22:15:24 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ int	main(void)
 {
 	BitcoinExchange	btc("data.csv");
 	
-	btc.testeDb("2011-10-26");
+	try {
+		btc.processInput("teste.txt");
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
 
 	return (0);
 }
