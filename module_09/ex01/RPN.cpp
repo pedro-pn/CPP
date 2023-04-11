@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:36:18 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/11 16:52:56 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/11 17:40:13 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ bool	RPN::_validateInput() const {
 		else
 			return (false);
 		++it;
-		if (*it != ' ' && it < _input.end())
+		if (it >= _input.end())
+			break ;
+		if (*it != ' ')
 			return (false);
 		++it;
 		if (count < 0)
