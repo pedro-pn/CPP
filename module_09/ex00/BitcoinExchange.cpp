@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/10 22:12:32 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/11 12:10:21 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <cstdlib>
 
 BitcoinExchange::BitcoinExchange(std::string const &dataBase) {
-	this->_openDataBase(dataBase);
+		this->_openDataBase(dataBase);
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &rhs) {
@@ -45,7 +45,7 @@ void	BitcoinExchange::_openDataBase(std::string const &fileName) {
 		try {
 			_getDbLine(line);
 		} catch (std::exception &e) {
-			std::cout << "Error: " << e.what() << std::endl;
+			std::cerr << "Error: " << e.what() << std::endl;
 		}
 		lineCount++;
 	}
@@ -63,7 +63,7 @@ void	BitcoinExchange::processInput(std::string const &fileName) {
 		try {
 			_getInputLine(line);
 		} catch (std::exception &e) {
-			std::cout << "Error: " << e.what() << std::endl;
+			std::cerr << "Error: " << e.what() << std::endl;
 		}
 		lineCount++;
 	}
@@ -125,9 +125,11 @@ double	BitcoinExchange::_getClosestValue(int key) {
 	std::map<int, double>::iterator	it = this->_dataBase.begin();
 	int	lowerKey;
 
-	if (key < it->first)
+	if (key <= it->first)
 		return (this->_dataBase[it->first]);
-	for (; it->first < key; ++it) {
+	else if (key >= this->_dataBase.rbegin()->first)
+		return (this->_dataBase[this->_dataBase.rbegin()->first]);
+	for (; it->first <= key; ++it) {
 		if (it->first <= key)
 			lowerKey = it->first;
 		}
@@ -200,7 +202,7 @@ bool	BitcoinExchange::_isInt(std::string const &n) {
 bool	BitcoinExchange::_isValue(std::string const &literal) {
 	size_t		doubleDot = 0;
 	size_t		iterator = 0;
-	
+
 	if (literal[iterator] == '-' || literal[iterator] == '+')
 		iterator++;
 	for ( ; iterator < literal.length(); iterator++) {
