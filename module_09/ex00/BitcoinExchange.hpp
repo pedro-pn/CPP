@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 11:41:14 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:12:24 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,4 @@ class BitcoinExchange {
 		void	_getInputLine(std::string const &line);
 };
 
-#endif
+#endif /* BITCOINEXCHANGE_HPP */
