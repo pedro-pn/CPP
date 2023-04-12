@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/11 12:18:48 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/12 10:42:50 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 # include <string>
 # include <map>
 # include <fstream>
-# define JAN 1
-# define FEV 2
-# define MAR 3
-# define APR 4
-# define MAY 5
-# define JUN 6
-# define JUL 7
-# define AUG 8
-# define SET 9
-# define OCT 10
-# define NOV 11
-# define DEC 12
+# define JAN "01"
+# define FEV "02"
+# define MAR "03"
+# define APR "04"
+# define MAY "05"
+# define JUN "06"
+# define JUL "07"
+# define AUG "08"
+# define SET "09"
+# define OCT "10"
+# define NOV "11"
+# define DEC "12"
 
 class BitcoinExchange {
 	
@@ -43,7 +43,7 @@ class BitcoinExchange {
 
 	private:
 	
-		std::map<int, double>	_dataBase;
+		std::map<std::string, double>	_dataBase;
 		
 		// datbase CSV functions
 		void	_openDataBase(std::string const &fileName);
@@ -55,7 +55,7 @@ class BitcoinExchange {
 		bool	_checkValue(long int value);
 		bool	_isInt(std::string const &n);
 		bool	_isValue(std::string const &literal);
-		double	_getClosestValue(int key);
+		double	_getClosestValue(std::string const &key);
 		void	_getInputLine(std::string const &line);
 };
 

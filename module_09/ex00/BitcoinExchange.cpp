@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/11 12:19:16 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/12 11:28:24 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,15 @@ void	BitcoinExchange::_getDbLine(std::string const &line) {
 	value = line.substr(comma + 1, line.length() - comma - 1);
 	if (_isValue(value) == false) 
 		throw std::runtime_error("bad format => " + value);
-	date.erase(date.begin() + 4);
-	date.erase(date.begin() + 6);
-	_dataBase.insert(std::pair<int, double>(std::atoi(date.c_str()), std::atof(value.c_str())));
+	_dataBase.insert(std::pair<std::string, double>(date, std::atof(value.c_str())));
 }
 
 void	BitcoinExchange::_getInputLine(std::string const &line) {
 	std::string::const_iterator	begin;
 	std::string					date;
 	std::string					value;
-	std::string					formatDate;
 	size_t						pipe;
 	long int					lvalue;
-	int							key;
 
 	pipe = line.find(" | ");
 	if (pipe == std::string::npos)
@@ -130,35 +126,23 @@ void	BitcoinExchange::_getInputLine(std::string const &line) {
 		throw std::runtime_error("bad format => '" + value + "': too large number");
 	if (lvalue < 0)
 		throw std::runtime_error("bad format => '" + value + "': not a positive number");
-	formatDate = date;
-	formatDate.erase(formatDate.begin() + 4);
-	formatDate.erase(formatDate.begin() + 6);
-	key = std::atoi(formatDate.c_str());
-	std::cout << date << " => " << value << " = " << std::atof(value.c_str()) * _getClosestValue(key) << std::endl;
+	std::cout << date << " => " << value << " = " << std::atof(value.c_str()) * _getClosestValue(date) << std::endl;
 }
 
-double	BitcoinExchange::_getClosestValue(int key) {
-	std::map<int, double>::iterator	it = this->_dataBase.begin();
-	int	lowerKey;
+double	BitcoinExchange::_getClosestValue(std::string const &key) {
+	std::map<std::string, double>::iterator	it;
 
-	if (key <= it->first)
-		return (this->_dataBase[it->first]);
-	else if (key >= this->_dataBase.rbegin()->first)
-		return (this->_dataBase[this->_dataBase.rbegin()->first]);
-	for (; it->first <= key; ++it) {
-		if (it->first <= key)
-			lowerKey = it->first;
-		}
-	return (this->_dataBase[lowerKey]);
+	it = _dataBase.upper_bound(key);
+	if (it == _dataBase.begin())
+		return (it->second);
+	--it;
+	return (it->second);
 }
 
 bool	BitcoinExchange::_checkDate(std::string const &date) {
 	std::string			syear;
 	std::string			smonth;
 	std::string			sday;
-	int					year;
-	int					month;
-	int					day;
 	size_t				dash;
 
 	dash = date.find('-');
@@ -167,31 +151,28 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 	syear = date.substr(0, dash);
 	if (this->_isInt(syear) == false)
 		return (false);
-	year = std::atoi(syear.c_str());
-	if (year < 1900 || year > 2023)
+	if (syear < "1900" || syear > "2023")
 		return (false);
 	smonth = date.substr(dash + 1, 2);
 	if (this->_isInt(smonth) == false)
 		return (false);
-	month = std::atoi(smonth.c_str());
 	dash = dash + 3;
 	if (date[dash] != '-')
 		return (false);
 	sday = date.substr(dash + 1, date.length() - dash + 1);
 	if (this->_isInt(sday) == false)
 		return (false);
-	day = std::atoi(sday.c_str());
-	if (month < 1 || month > 12)
+	if (smonth < JAN || smonth > DEC)
 		return (false);
-	if (month == JAN || month == MAR || month == MAY || month == JUL
-		|| month == AUG || month == OCT || month == DEC) {
-		if (day < 0 || day > 31)
+	if (smonth == JAN || smonth == MAR || smonth == MAY || smonth == JUL
+		|| smonth == AUG || smonth == OCT || smonth == DEC) {
+		if (sday < "01" || sday > "31")
 			return (false);
-	} else if (month == APR || month == JUN || month == SET || month == NOV) {
-		if (day < 0 || day > 30)
+	} else if (smonth == APR || smonth == JUN || smonth == SET || smonth == NOV) {
+		if (sday < "01" || sday > "30")
 			return (false);
-	} else if (month == FEV) {
-		if (day < 0 || day > 29)
+	} else if (smonth == FEV) {
+		if (sday < "01" || sday > "29")
 			return (false);
 	}
 	return (true);
