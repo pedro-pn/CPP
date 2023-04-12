@@ -6,21 +6,27 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 19:32:11 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 20:28:49 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 
 PmergeMe::PmergeMe(void) {
-
+	std::cout << "Nothing to sort!" << std::endl;
 }
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
-	_mergeInsertSortVector(0, _vector.size() - 1, CUTOFF);
+	std::cout << "before: ";
+	_printContainer(this->_vector);
+	_sortVector();
+	std::cout << "after: ";
+	_printContainer(this->_vector);
+
 }
 
 PmergeMe::PmergeMe(PmergeMe const &rhs) {
@@ -108,15 +114,32 @@ void	PmergeMe::_mergeInsertSortVector(int start, int end, int cutoff) {
 
 	if (start >= end)
 		return ;
-	if (end - start + 1 <= cutoff) {
-		std::cout << "insert!" << std::endl;
+	if (end - start + 1 <= cutoff)
 		_insertionSortVector(start, end);
-	}
-	else{
-		std::cout << "merge!" << std::endl;
+	else {
 		middle = (start + end) / 2;
 		_mergeInsertSortVector(start, middle, cutoff);
 		_mergeInsertSortVector(middle + 1, end, cutoff);
 		_mergeVector(start, middle, end);
 	}
+}
+
+void	PmergeMe::_sortVector(void) {
+	clock_t	startTime, endTime;
+	double	resultTime;
+
+	startTime = clock();
+	this->_mergeInsertSortVector(0, this->_vector.size() - 1, 5);
+	endTime = clock();
+	resultTime = (double) 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+	std::cout << "Time taken by vector: " << resultTime << std::endl;
+}
+
+
+template<typename T>
+void	PmergeMe::_printContainer(T container) const {
+	for (typename T::const_iterator it = container.begin(); it != container.end(); ++it) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 }

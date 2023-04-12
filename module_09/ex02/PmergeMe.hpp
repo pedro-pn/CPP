@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:52 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 19:32:33 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:58:34 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ class PmergeMe {
 	private:
 
 		void	_parseInput(char **input);
+		void	_sortVector(void);
+		void	_sortList(void);
+
 
 		//vector merge-insert sort
 		void	_mergeInsertSortVector(int start, int end, int cutoff);
@@ -46,6 +49,9 @@ class PmergeMe {
 
 		//vector insert sort
 		void	_insertionSortVector(int start, int end);
+
+		template<typename T>
+		void	_printContainer(T container) const;
 };
 
 #endif
