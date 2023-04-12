@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:36:18 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/11 17:40:13 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/12 14:19:46 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	operation(int a, int b, char op) {
 		case '-':
 			return (a - b);
 		case '/':
+			if (b == 0)
+				throw std::runtime_error("Error");
 			return (a / b);
 		case '*':
 			return (a * b);
