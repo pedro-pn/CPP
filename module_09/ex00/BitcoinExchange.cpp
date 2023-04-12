@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 11:43:39 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:26:54 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ bool	BitcoinExchange::_checkInputHeader(std::string const &line) {
 }
 
 void	BitcoinExchange::_getDbLine(std::string const &line) {
-	std::string::const_iterator	begin;
 	std::string					date;
 	std::string					value;
 	size_t						comma;
@@ -96,7 +95,6 @@ void	BitcoinExchange::_getDbLine(std::string const &line) {
 	comma = line.find(',');
 	if (comma == std::string::npos)
 		throw (std::runtime_error("bad format => " + line));
-	begin = line.begin();
 	date = line.substr(0, comma);
 	if (_checkDate(date) == false) 
 		throw std::runtime_error("bad format => " + date);
@@ -107,7 +105,6 @@ void	BitcoinExchange::_getDbLine(std::string const &line) {
 }
 
 void	BitcoinExchange::_getInputLine(std::string const &line) {
-	std::string::const_iterator	begin;
 	std::string					date;
 	std::string					value;
 	size_t						pipe;
@@ -116,7 +113,6 @@ void	BitcoinExchange::_getInputLine(std::string const &line) {
 	pipe = line.find(" | ");
 	if (pipe == std::string::npos)
 		throw (std::runtime_error("bad format => " + line));
-	begin = line.begin();
 	date = line.substr(0, pipe);
 	if (_checkDate(date) == false) 
 		throw std::runtime_error("bad data format => " + date);
