@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:52 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:55:15 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:32:33 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <vector>
 # include <string>
 # define DIGITS "0123456789"
+# define CUTOFF 5
 
 class PmergeMe {
 
@@ -35,10 +36,16 @@ class PmergeMe {
 
 	private:
 
-
 		void	_parseInput(char **input);
-		void	_mergeSortVector(int start, int end);
+
+		//vector merge-insert sort
+		void	_mergeInsertSortVector(int start, int end, int cutoff);
+
+		// vector merge sort
 		void	_mergeVector(int start, int middle, int end);
+
+		//vector insert sort
+		void	_insertionSortVector(int start, int end);
 };
 
 #endif

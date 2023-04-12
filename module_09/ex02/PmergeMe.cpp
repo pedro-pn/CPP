@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:53:50 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:32:11 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PmergeMe::PmergeMe(void) {
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
-	_mergeSortVector(0, this->_vector.size() - 1);
+	_mergeInsertSortVector(0, _vector.size() - 1, CUTOFF);
 }
 
 PmergeMe::PmergeMe(PmergeMe const &rhs) {
@@ -88,11 +88,35 @@ void	PmergeMe::_mergeVector(int start, int middle, int end) {
 	}
 }
 
-void	PmergeMe::_mergeSortVector(int start, int end) {
+void	PmergeMe::_insertionSortVector(int start, int end) {
+	std::vector<int>::iterator	it1 = this->_vector.begin() + start, it2;
+	int	key;
+
+	for (++it1; it1 != this->_vector.begin() + end + 1; ++it1) {
+		key = *it1;
+		it2 = it1 - 1;
+		while (it2 >= this->_vector.begin() + start && *it2 > key) {
+			*(it2 + 1) = *it2;
+			--it2;
+		}
+		*(it2 + 1) = key;
+	}
+}
+
+void	PmergeMe::_mergeInsertSortVector(int start, int end, int cutoff) {
+	int middle;
+
 	if (start >= end)
 		return ;
-	int middle = (end + start) / 2;
-	_mergeSortVector(start, middle);
-	_mergeSortVector(middle + 1, end);
-	_mergeVector(start, middle, end);
+	if (end - start + 1 <= cutoff) {
+		std::cout << "insert!" << std::endl;
+		_insertionSortVector(start, end);
+	}
+	else{
+		std::cout << "merge!" << std::endl;
+		middle = (start + end) / 2;
+		_mergeInsertSortVector(start, middle, cutoff);
+		_mergeInsertSortVector(middle + 1, end, cutoff);
+		_mergeVector(start, middle, end);
+	}
 }
