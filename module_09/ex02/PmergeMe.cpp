@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:51:39 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:53:50 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PmergeMe::PmergeMe(void) {
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
-	_mergeSortVector(this->_vector, 0, this->_vector.size() - 1);
+	_mergeSortVector(0, this->_vector.size() - 1);
 }
 
 PmergeMe::PmergeMe(PmergeMe const &rhs) {
@@ -55,10 +55,10 @@ void	PmergeMe::_parseInput(char **input) {
 	}
 }
 
-void	PmergeMe::_mergeVector(std::vector<int> &vector, int start, int middle, int end) {
+void	PmergeMe::_mergeVector(int start, int middle, int end) {
 	std::vector<int>	aux1;
 	std::vector<int>	aux2;
-	std::vector<int>::iterator	vecIt = vector.begin() + start;
+	std::vector<int>::iterator	vecIt = this->_vector.begin() + start;
 	std::vector<int>::iterator	vecItm = vecIt + middle - start + 1;
 	std::vector<int>::iterator	aux1It;
 	std::vector<int>::iterator	aux2It;
@@ -88,11 +88,11 @@ void	PmergeMe::_mergeVector(std::vector<int> &vector, int start, int middle, int
 	}
 }
 
-void	PmergeMe::_mergeSortVector(std::vector<int> &vector, int start, int end) {
+void	PmergeMe::_mergeSortVector(int start, int end) {
 	if (start >= end)
 		return ;
 	int middle = (end + start) / 2;
-	_mergeSortVector(vector, start, middle);
-	_mergeSortVector(vector, middle + 1, end);
-	_mergeVector(vector, start, middle, end);
+	_mergeSortVector(start, middle);
+	_mergeSortVector(middle + 1, end);
+	_mergeVector(start, middle, end);
 }

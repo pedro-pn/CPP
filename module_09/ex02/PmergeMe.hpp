@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:52 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:47:20 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:55:15 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@ class PmergeMe {
 		~PmergeMe(void);
 
 		PmergeMe&	operator=(PmergeMe const &rhs);
+
 		std::list<int>		_list;
 		std::vector<int>	_vector;
 
 	private:
 
+
 		void	_parseInput(char **input);
-		void	_mergeSortVector(std::vector<int> &vector, int start, int end);
-		void	_mergeVector(std::vector<int> &vector, int start, int middle, int end);
+		void	_mergeSortVector(int start, int end);
+		void	_mergeVector(int start, int middle, int end);
 };
 
 #endif
