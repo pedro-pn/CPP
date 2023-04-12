@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 10:42:50 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:41:14 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@
 # include <fstream>
 # define JAN "01"
 # define FEV "02"
-# define MAR "03"
 # define APR "04"
-# define MAY "05"
 # define JUN "06"
-# define JUL "07"
-# define AUG "08"
 # define SET "09"
-# define OCT "10"
 # define NOV "11"
 # define DEC "12"
+# define FYEAR "1900"
+# define LYEAR "2023"
 
 class BitcoinExchange {
 	

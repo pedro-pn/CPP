@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 11:28:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:43:39 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <cstdlib>
 
 BitcoinExchange::BitcoinExchange(std::string const &dataBase) {
-		this->_openDataBase(dataBase);
+	this->_openDataBase(dataBase);
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &rhs) {
@@ -51,6 +51,7 @@ void	BitcoinExchange::_openDataBase(std::string const &fileName) {
 		}
 		lineCount++;
 	}
+	file.close();
 }
  
 void	BitcoinExchange::processInput(std::string const &fileName) {
@@ -71,6 +72,7 @@ void	BitcoinExchange::processInput(std::string const &fileName) {
 		}
 		lineCount++;
 	}
+	file.close();
 }
 
 bool	BitcoinExchange::_checkDbHeader(std::string const &line) {
@@ -151,7 +153,7 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 	syear = date.substr(0, dash);
 	if (this->_isInt(syear) == false)
 		return (false);
-	if (syear < "1900" || syear > "2023")
+	if (syear < FYEAR || syear > LYEAR)
 		return (false);
 	smonth = date.substr(dash + 1, 2);
 	if (this->_isInt(smonth) == false)
@@ -164,17 +166,15 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 		return (false);
 	if (smonth < JAN || smonth > DEC)
 		return (false);
-	if (smonth == JAN || smonth == MAR || smonth == MAY || smonth == JUL
-		|| smonth == AUG || smonth == OCT || smonth == DEC) {
-		if (sday < "01" || sday > "31")
-			return (false);
-	} else if (smonth == APR || smonth == JUN || smonth == SET || smonth == NOV) {
+	if (smonth == APR || smonth == JUN || smonth == SET || smonth == NOV) {
 		if (sday < "01" || sday > "30")
 			return (false);
 	} else if (smonth == FEV) {
 		if (sday < "01" || sday > "29")
 			return (false);
 	}
+	if (sday < "01" || sday > "31")
+		return (false);
 	return (true);
 }
 
