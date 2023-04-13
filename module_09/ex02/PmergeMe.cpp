@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/12 20:28:49 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:02:35 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,32 @@ PmergeMe::PmergeMe(void) {
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
+	// std::cout << "before: ";
+	// _printContainer(this->_vector);
+	// _sortVector();
+	// std::cout << "after: ";
+	// _printContainer(this->_vector);
+
+	// std::cout << "before: ";
+	// _printContainer(this->_list);
+	// std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
+	// _insertionSortList(0, this->_list.size() - 1);
+	// std::cout << "after: ";
+	// _printContainer(this->_list);
+
 	std::cout << "before: ";
-	_printContainer(this->_vector);
-	_sortVector();
+	_printContainer(this->_list);
+	std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
+	_mergeInsertSortList(0, this->_list.size() - 1, 2);
 	std::cout << "after: ";
-	_printContainer(this->_vector);
+	_printContainer(this->_list);
+
+	// std::cout << "before: ";
+	// _printContainer(this->_vector);
+	// std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
+	// _insertionSortVector(0, this->_vector.size() - 1);
+	// std::cout << "after: ";
+	// _printContainer(this->_vector);
 
 }
 
@@ -60,6 +81,8 @@ void	PmergeMe::_parseInput(char **input) {
 		this->_vector.push_back(static_cast<int>(n));
 	}
 }
+
+/* ======================= VECTOR SORTING ALGORITHM ========================= */
 
 void	PmergeMe::_mergeVector(int start, int middle, int end) {
 	std::vector<int>	aux1;
@@ -101,7 +124,7 @@ void	PmergeMe::_insertionSortVector(int start, int end) {
 	for (++it1; it1 != this->_vector.begin() + end + 1; ++it1) {
 		key = *it1;
 		it2 = it1 - 1;
-		while (it2 >= this->_vector.begin() + start && *it2 > key) {
+		while (it2 >= (this->_vector.begin() + start) && *it2 > key) {
 			*(it2 + 1) = *it2;
 			--it2;
 		}
@@ -135,6 +158,90 @@ void	PmergeMe::_sortVector(void) {
 	std::cout << "Time taken by vector: " << resultTime << std::endl;
 }
 
+/* ==================== END OF VECTOR SORTING ALGORITHM ===================== */
+
+/* ======================== LIST SORTING ALGORITHM ========================== */
+
+std::list<int>::iterator	PmergeMe::_getListPosition(int position) {
+	std::list<int>::iterator	it = this->_list.begin();
+
+	for (int i = 0; i < position; ++it) {
+		i++;
+	}
+	return (it);
+}
+
+void	PmergeMe::_mergeList(int start, int middle, int end) {
+	std::list<int>	aux1;
+	std::list<int>	aux2;
+	std::list<int>::iterator	vecIt = this->_getListPosition(start);
+	std::list<int>::iterator	vecItm = this->_getListPosition(middle + 1);
+	std::list<int>::iterator	aux1It;
+	std::list<int>::iterator	aux2It;
+
+	aux1.insert(aux1.begin(), vecIt, vecItm);
+	aux2.insert(aux2.begin(), vecItm, _getListPosition(end + 1));
+	aux1It = aux1.begin();
+	aux2It = aux2.begin();
+	while (aux1It != aux1.end() && aux2It != aux2.end()) {
+		if (*aux1It <= *aux2It) {
+			*vecIt = *aux1It;
+			++aux1It;
+		}
+		else {
+			*vecIt = *aux2It;
+			++aux2It;
+		}
+		++vecIt;
+	}
+	for (; aux1It != aux1.end(); ++aux1It) {
+		*vecIt = *aux1It;
+		++vecIt;
+	}
+	for (; aux2It != aux2.end(); ++aux2It) {
+		*vecIt = *aux2It;
+		++vecIt;
+	}
+}
+
+void	PmergeMe::_insertionSortList(int start, int end) {
+	std::list<int>::iterator	it1 = _getListPosition(start), it2, auxIt1, auxIt2;
+	int	key;
+
+	for (++it1; it1 != _getListPosition(start + end + 1); ++it1) {
+		key = *it1;
+		auxIt1 = it1;
+		auxIt1--;
+		it2 = auxIt1;
+		while (it2 != --this->_list.begin() && *it2 > key) {
+			auxIt2 = it2;
+			++auxIt2;
+			*auxIt2 = *it2;
+			--it2;
+		}
+		auxIt2 = it2;
+		++auxIt2;
+		*auxIt2 = key;
+	}
+}
+
+void	PmergeMe::_mergeInsertSortList(int start, int end, int cutoff) {
+	int middle;
+
+	if (start >= end)
+		return ;
+	if (end - start + 1 <= cutoff){
+		std::cout << "INSERT" << std::endl;
+		_insertionSortList(start, end);
+	}
+	else {
+		std::cout << "MERGE" << std::endl;
+		middle = (start + end) / 2;
+		_mergeInsertSortList(start, middle, cutoff);
+		_mergeInsertSortList(middle + 1, end, cutoff);
+		_mergeList(start, middle, end);
+	}
+}
 
 template<typename T>
 void	PmergeMe::_printContainer(T container) const {
