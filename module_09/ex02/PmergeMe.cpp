@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/13 12:02:35 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:05:03 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,12 @@ PmergeMe::PmergeMe(void) {
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
-	// std::cout << "before: ";
-	// _printContainer(this->_vector);
-	// _sortVector();
-	// std::cout << "after: ";
-	// _printContainer(this->_vector);
-
-	// std::cout << "before: ";
-	// _printContainer(this->_list);
-	// std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
-	// _insertionSortList(0, this->_list.size() - 1);
-	// std::cout << "after: ";
-	// _printContainer(this->_list);
-
 	std::cout << "before: ";
 	_printContainer(this->_list);
 	std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
 	_mergeInsertSortList(0, this->_list.size() - 1, 2);
 	std::cout << "after: ";
 	_printContainer(this->_list);
-
-	// std::cout << "before: ";
-	// _printContainer(this->_vector);
-	// std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
-	// _insertionSortVector(0, this->_vector.size() - 1);
-	// std::cout << "after: ";
-	// _printContainer(this->_vector);
-
 }
 
 PmergeMe::PmergeMe(PmergeMe const &rhs) {
@@ -208,12 +187,12 @@ void	PmergeMe::_insertionSortList(int start, int end) {
 	std::list<int>::iterator	it1 = _getListPosition(start), it2, auxIt1, auxIt2;
 	int	key;
 
-	for (++it1; it1 != _getListPosition(start + end + 1); ++it1) {
+	for (++it1; it1 != _getListPosition(end + 1); ++it1) {
 		key = *it1;
 		auxIt1 = it1;
 		auxIt1--;
 		it2 = auxIt1;
-		while (it2 != --this->_list.begin() && *it2 > key) {
+		while (it2 != --_getListPosition(start) && *it2 > key) {
 			auxIt2 = it2;
 			++auxIt2;
 			*auxIt2 = *it2;
@@ -231,11 +210,9 @@ void	PmergeMe::_mergeInsertSortList(int start, int end, int cutoff) {
 	if (start >= end)
 		return ;
 	if (end - start + 1 <= cutoff){
-		std::cout << "INSERT" << std::endl;
 		_insertionSortList(start, end);
 	}
 	else {
-		std::cout << "MERGE" << std::endl;
 		middle = (start + end) / 2;
 		_mergeInsertSortList(start, middle, cutoff);
 		_mergeInsertSortList(middle + 1, end, cutoff);
