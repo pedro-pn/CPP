@@ -2,7 +2,7 @@ SOURCES = main.cpp PmergeMe.cpp
 NAME = PmergeMe
 OBJS = $(SOURCES:.cpp=.o)
 CC = c++
-FLAGS =  -std=c++98 -g
+FLAGS = -Werror -Wextra -Wall -std=c++98
 
 all: ${NAME}
 
