@@ -6,7 +6,7 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:52 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/13 13:03:33 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:37:27 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ class PmergeMe {
 
 		PmergeMe&	operator=(PmergeMe const &rhs);
 
-		std::list<int>		_list;
-		std::vector<int>	_vector;
 
 	private:
 
+		std::list<int>		_list;
+		std::vector<int>	_vector;
+		double				_sortVectorTime;
+		double				_sortListTime;
+
 		void	_parseInput(char **input);
-		void	_sortVector(void);
-		void	_sortList(void);
+		double	_sort(void (PmergeMe::*sorting)(int, int, int), int size);
 
 		/* ================= VECTOR SORTING ALGORITHMS =======================*/
 
@@ -65,7 +67,8 @@ class PmergeMe {
 
 		std::list<int>::iterator	_getListPosition(int position);
 
-		template<typename T>
+		
+		template <typename T>
 		void	_printContainer(T container) const;
 };
 

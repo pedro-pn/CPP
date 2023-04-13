@@ -6,14 +6,14 @@
 /*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:39:14 by ppaulo-d          #+#    #+#             */
-/*   Updated: 2023/04/13 13:05:03 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:56:21 by ppaulo-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <sys/time.h>
 
 PmergeMe::PmergeMe(void) {
 	std::cout << "Nothing to sort!" << std::endl;
@@ -21,12 +21,24 @@ PmergeMe::PmergeMe(void) {
 
 PmergeMe::PmergeMe(char **input) {
 	this->_parseInput(input);
-	std::cout << "before: ";
+	std::cout << "[VECTOR] before: ";
+	_printContainer(this->_vector);
+	this->_sortVectorTime = _sort(&PmergeMe::_mergeInsertSortVector, this->_vector.size());
+	std::cout << "[VECTOR] after: ";
+	_printContainer(this->_vector);
+
+	std::cout << std::endl;
+
+	std::cout << "[LIST] before: ";
 	_printContainer(this->_list);
-	std::cout << "at position 5: " << *_getListPosition(0) << std::endl;
-	_mergeInsertSortList(0, this->_list.size() - 1, 2);
-	std::cout << "after: ";
+	this->_sortListTime = _sort(&PmergeMe::_mergeInsertSortList, this->_list.size());
+	std::cout << "[LIST] after: ";
 	_printContainer(this->_list);
+
+	std::cout << "Time to process a range of " << this->_vector.size()
+		<< " elements with std::vector: " << this->_sortVectorTime << " ms" << std::endl;
+	std::cout << "Time to process a range of " << this->_list.size()
+		<< " elements with std::list: " << this->_sortListTime << " ms" << std::endl;
 }
 
 PmergeMe::PmergeMe(PmergeMe const &rhs) {
@@ -126,17 +138,6 @@ void	PmergeMe::_mergeInsertSortVector(int start, int end, int cutoff) {
 	}
 }
 
-void	PmergeMe::_sortVector(void) {
-	clock_t	startTime, endTime;
-	double	resultTime;
-
-	startTime = clock();
-	this->_mergeInsertSortVector(0, this->_vector.size() - 1, 5);
-	endTime = clock();
-	resultTime = (double) 1000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
-	std::cout << "Time taken by vector: " << resultTime << std::endl;
-}
-
 /* ==================== END OF VECTOR SORTING ALGORITHM ===================== */
 
 /* ======================== LIST SORTING ALGORITHM ========================== */
@@ -220,7 +221,22 @@ void	PmergeMe::_mergeInsertSortList(int start, int end, int cutoff) {
 	}
 }
 
-template<typename T>
+double	PmergeMe::_sort(void (PmergeMe::*sorting)(int, int, int), int size) {
+	struct timeval	_time;
+	double			startTime;
+	double			endTime;
+	double			resultTime;
+
+	gettimeofday(&_time, NULL);
+	startTime = _time.tv_usec;
+	(this->*sorting)(0, size - 1, 5);
+	gettimeofday(&_time, NULL);
+	endTime = _time.tv_usec;
+	resultTime = endTime - startTime;
+	return (resultTime / 1000.0);
+}
+
+template <typename T>
 void	PmergeMe::_printContainer(T container) const {
 	for (typename T::const_iterator it = container.begin(); it != container.end(); ++it) {
 		std::cout << *it << " ";
