@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 13:26:54 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 20:23:30 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void	BitcoinExchange::_getInputLine(std::string const &line) {
 	if (_isValue(value) == false) 
 		throw std::runtime_error("bad format => " + value);
 	lvalue = std::atof(value.c_str());
-	if (lvalue > __INT_MAX__ || _checkValue(lvalue) == false)
+	if (lvalue > __INT_MAX__ || lvalue > 1000)
 		throw std::runtime_error("bad format => '" + value + "': too large number");
 	if (lvalue < 0)
 		throw std::runtime_error("bad format => '" + value + "': not a positive number");
@@ -170,12 +170,6 @@ bool	BitcoinExchange::_checkDate(std::string const &date) {
 			return (false);
 	}
 	if (sday < "01" || sday > "31")
-		return (false);
-	return (true);
-}
-
-bool	BitcoinExchange::_checkValue(long int value) {
-	if (value < 0 || value > 1000)
 		return (false);
 	return (true);
 }

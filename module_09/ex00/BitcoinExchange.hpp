@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:40:02 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 14:12:24 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 20:23:35 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ class BitcoinExchange {
 
 		bool	_checkInputHeader(std::string const &line);
 		bool	_checkDate(std::string const &date);
-		bool	_checkValue(long int value);
 		bool	_isInt(std::string const &n);
 		bool	_isValue(std::string const &literal);
 		double	_getClosestValue(std::string const &key);
