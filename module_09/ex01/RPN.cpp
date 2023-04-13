@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppaulo-d <ppaulo-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:36:18 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/12 14:19:46 by ppaulo-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:36:42 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,17 @@ int	operation(int a, int b, char op) {
 
 int	RPN::calculate() {
 	std::string::const_iterator	it = _input.begin();
-	std::string				operators = "+-/*";
+	std::string					operators = "+-/*";
+	int							a;
+	int							b;
 
 	while (it < _input.end()) {
 		if (std::isdigit(*it))
 			_stack.push(static_cast<int>(*it - '0'));
 		else if (operators.find(*it) != std::string::npos) {
-			_stack.push(operation(_pop(), _pop(), *it));
+			b = _pop();
+			a = _pop();
+			_stack.push(operation(a, b, *it));
 		}
 		++it;
 	}
