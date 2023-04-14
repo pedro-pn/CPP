@@ -6,7 +6,7 @@
 /*   By: pedro <pedro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:58:00 by pedro             #+#    #+#             */
-/*   Updated: 2023/04/13 20:23:30 by pedro            ###   ########.fr       */
+/*   Updated: 2023/04/13 21:02:03 by pedro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ bool	BitcoinExchange::_checkDbHeader(std::string const &line) {
 }
  
 bool	BitcoinExchange::_checkInputHeader(std::string const &line) {
-	if (line.compare("data | value") != 0)
+	if (line.compare("date | value") != 0)
 		return (false);
 	return (true);
 }
